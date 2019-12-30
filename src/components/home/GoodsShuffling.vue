@@ -30,6 +30,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.container{
+  height: 169px;
+}
 .swipeImage {
   width: 100%;
 }

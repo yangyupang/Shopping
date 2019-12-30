@@ -33,5 +33,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 8vh;
+}
+/deep/.van-search{
+  padding: 0 !important;
 }
 </style>

@@ -11,7 +11,10 @@ export default {
         return service.req('/recommend')
     },
 
-    search({ value, page = 1 }) {
+    search({
+        value,
+        page = 1
+    }) {
         return service.req('/search', {
             value,
             page
@@ -23,7 +26,7 @@ export default {
      * category 分类查询  参数id：默认分类的id
      */
     category(id) {
-        return service.req('/classification?mallSubId=${id}')
+        return service.req(`/classification?mallSubId=${id}`)
     },
 
     // ===============================================================================================================
@@ -37,7 +40,11 @@ export default {
         return service.req('/getCard')
     },
 
-    editCart({ count, id, mallPrice }) {
+    editCart({
+        count,
+        id,
+        mallPrice
+    }) {
         return service.req('/editCart', {
             count,
             id,
@@ -69,8 +76,11 @@ export default {
      * isCollection     查询商品是否已收藏      参数：  id:商品的id
      * addShop          加入购物车             参数：  id:商品的id
      */
-    goodOne({ id, page = 1 }) {
-        return service.req('/goods/one?id=${id}&page=${page}')
+    goodOne({
+        id,
+        page = 1
+    }) {
+        return service.req(`/goods/one?id=${id}&page=${page}`)
     },
 
     collection(goods) {
@@ -185,7 +195,11 @@ export default {
             }
         })
     },
-    register({ nickname, password, verify }) {
+    register({
+        nickname,
+        password,
+        verify
+    }) {
         return service.req('/register', {
             nickname,
             password,
@@ -193,7 +207,11 @@ export default {
         })
     },
 
-    login({ nickname, password, verify }) {
+    login({
+        nickname,
+        password,
+        verify
+    }) {
         return service.req('/login', {
             nickname,
             password,

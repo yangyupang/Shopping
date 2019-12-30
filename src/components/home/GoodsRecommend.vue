@@ -10,8 +10,8 @@
             <img :src="item.image" alt />
             <div class="goodsname">{{item.goodsName}}</div>
             <div class="price">
-              <span>￥{{item.price}}</span>
               <span>￥{{item.mallPrice}}</span>
+              <span>￥{{item.price}}</span>
             </div>
             <div class="details">
               <div class="details-icon">
@@ -43,7 +43,7 @@ export default {
     init() {
       this.bs = new BScroll(".wrapperx", {
         scrollX: true,
-        click: true,
+        click: false,
         probeType: 3 // listening scroll hook
       });
     }
@@ -90,9 +90,12 @@ export default {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-align: center;
     }
     .price {
       display: flex;
+      justify-content: center;
+      margin-top: 5px;
       span {
         &:nth-child(1) {
           font-size: 14px;

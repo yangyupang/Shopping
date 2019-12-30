@@ -26,9 +26,12 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-.top{
-  display: flex;
-  justify-content:space-around;
-  z-index: 999 !important;
+// .top{
+//   display: flex;
+//   justify-content:space-around;
+//   z-index: 999 !important;
+// }
+/deep/.van-tabbar{
+  height: 10vh;
 }
 </style>

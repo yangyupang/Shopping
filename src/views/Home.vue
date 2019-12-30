@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <my-top>
+  <div class="home">
+    <my-top class="top">
       <div slot="left" class="city">
         <span v-if="city !=='' ">{{city}}</span>
         <span v-else>定位中..</span>
@@ -12,17 +12,24 @@
       <div slot="right" class="search">搜索</div>
     </my-top>
     <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-      <better-scroll>
+      <better-scroll v-if="list.floor1">
         <!-- 商品轮播 -->
         <GoodsShuffling :swipelist="list.slides" class="swipe"></GoodsShuffling>
         <!-- 新鲜水果，中外名酒 -->
         <Recommend :recommend="list.category" class="swipe"></Recommend>
         <!-- 广告  内测期间 仅对公司内部配送 -->
-        <img :src="picture" alt class="delivery" />
+        <div class="delivery"><img :src="picture" alt  /> </div>
         <!-- 商品推荐 -->
         <GoodsRecommend :goodsrecommend="list.recommend" class="swipe"></GoodsRecommend>
-        <!-- 1F休闲水果 -->
-        <LeisureGoods :leisuregoods="list.floor1" class="swipe"></LeisureGoods>
+        <!-- 1F休闲食品 -->
+        <FloorGoods :goods="list.floor1" :floorName="floorname.floor1" indx="1F" class="swipe"></FloorGoods>
+        <!-- 2F新鲜水果 -->
+        <FloorGoods :goods="list.floor2" :floorName="floorname.floor2" indx="2F" class="swipe"></FloorGoods>
+        <!-- 3F营养奶品 -->
+        <FloorGoods :goods="list.floor3" :floorName="floorname.floor3" indx="3F" class="swipe"></FloorGoods>
+        <!-- 热销商品 -->
+        <HotProduct :hotproduct="list.hotGoods" class="swipe"></HotProduct>
+        <!-- <div class="perch"></div> -->
       </better-scroll>
     </van-pull-refresh>
   </div>
@@ -32,25 +39,35 @@
 import GoodsShuffling from "../../src/components/home/GoodsShuffling";
 import Recommend from "../../src/components/home/Recommend";
 import GoodsRecommend from "../../src/components/home/GoodsRecommend";
-import LeisureGoods from "../../src/components/home/LeisureGoods";
+import FloorGoods from "../../src/components/home/FloorGoods";
+import HotProduct from "../../src/components/home/HotProduct";
 export default {
   data() {
     return {
       city: "",
       searchValue: "",
-      list: {},
+      list: [],
       isLoading: false,
-      picture:"",
+      picture: "",
+      floorname: ""
     };
   },
-  components: { GoodsShuffling, Recommend,GoodsRecommend,LeisureGoods },
+  components: {
+    GoodsShuffling,
+    Recommend,
+    GoodsRecommend,
+    FloorGoods,
+    HotProduct
+  },
   methods: {
     recommend() {
       this.$api
         .recommend()
         .then(res => {
           this.list = res.data;
-          this.picture=res.data.advertesPicture.PICTURE_ADDRESS;
+          this.picture = res.data.advertesPicture.PICTURE_ADDRESS;
+          this.floorname = res.data.floorName;
+          // console.log(floorname);
         })
         .catch(err => {
           console.log(err);
@@ -98,6 +115,12 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #ececec;
+}
 .lh {
   width: 100px;
   height: 100px;
@@ -123,10 +146,17 @@ export default {
   width: 56px;
 }
 .swipe {
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 .delivery {
   width: 100vw;
   margin-bottom: 10px;
+  height: 33.4px;
+  img{
+    width: 100%;
+  }
+}
+.home {
+  padding-bottom: 13.333vw;
 }
 </style>

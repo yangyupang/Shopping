@@ -33,6 +33,7 @@ export default {
 .recommend {
   width: 95%;
   margin: 0 auto;
+  height: 92px;
   border-radius: 15px;
   display: flex;
   justify-content: space-around;

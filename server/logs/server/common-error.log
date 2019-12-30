@@ -7,3 +7,21 @@ name: "unhandledExceptionError"
 pid: 17748
 hostname: �������С����
 
+2019-12-30 18:38:13,744 ERROR 10832 nodejs.unhandledExceptionError: read ECONNRESET
+    at TCP.onStreamRead (internal/stream_base_commons.js:201:27)
+errno: "ECONNRESET"
+code: "ECONNRESET"
+syscall: "read"
+name: "unhandledExceptionError"
+pid: 10832
+hostname: �������С����
+
+2019-12-30 20:12:52,925 ERROR 10832 nodejs.unhandledExceptionError: read ECONNRESET
+    at TCP.onStreamRead (internal/stream_base_commons.js:201:27)
+errno: "ECONNRESET"
+code: "ECONNRESET"
+syscall: "read"
+name: "unhandledExceptionError"
+pid: 10832
+hostname: �������С����
+
