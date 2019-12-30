@@ -26,4 +26,9 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+.top{
+  display: flex;
+  justify-content:space-around;
+  z-index: 999 !important;
+}
 </style>

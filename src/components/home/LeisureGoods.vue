@@ -1,7 +1,7 @@
 <template>
 <!-- 休闲商品 -->
  <div>
-
+lalall
  </div>
 </template>
 

@@ -10,7 +10,7 @@ const routes = [{
         path: '/home',
         component: Bottom,
         children: [{
-            path: '',
+            path: '/',
             name: 'home',
             meta: {
                 title: "首页"
@@ -197,7 +197,19 @@ const routes = [{
         component: () =>
             import ( /* webpackChunkName: "about" */ '../views/address/EditAddress.vue')
     },
-
+    {
+        //登录注册
+        path: '/login',
+        name: 'login',
+        meta: {
+            title: "登录注册"
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../views/login/Login.vue')
+    },
 ]
 
 const router = new VueRouter({

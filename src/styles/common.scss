@@ -1,0 +1,26 @@
+.van_icon__image {
+    .van-icon__image {
+        width: auto !important;
+        height: auto !important;
+    }
+}
+
+.van_hairline--top-bottom {
+    .van-hairline,
+    .van-hairline--bottom,
+    .van-hairline--left,
+    .van-hairline--right,
+    .van-hairline--surround,
+    .van-hairline--top,
+    .van-hairline--top-bottom {
+        position: relative;
+        margin-bottom: 20px !important;
+    }
+    .van-cell {
+        margin-bottom: 20px !important;
+    }
+}
+
+.van-search {
+    background-color: #ececec !important;
+}
