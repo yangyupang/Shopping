@@ -11,14 +11,21 @@
       </div>
       <div slot="right" class="search">搜索</div>
     </my-top>
-    <van-pull-refresh v-model="isLoading" success-text="刷新成功" @refresh="onRefresh">
-      <better-scroll v-if="list.floor1">
+    <van-pull-refresh
+      v-model="isLoading"
+      success-text="刷新成功"
+      @refresh="onRefresh"
+      v-if="list.floor1"
+    >
+      <better-scroll v-if="list.floor1" class="wrapper">
         <!-- 商品轮播 -->
         <GoodsShuffling :swipelist="list.slides" class="swipe"></GoodsShuffling>
         <!-- 新鲜水果，中外名酒 -->
         <Recommend :recommend="list.category" class="swipe"></Recommend>
         <!-- 广告  内测期间 仅对公司内部配送 -->
-        <div class="delivery"><img :src="picture" alt  /> </div>
+        <div class="delivery">
+          <img :src="picture" alt />
+        </div>
         <!-- 商品推荐 -->
         <GoodsRecommend :goodsrecommend="list.recommend" class="swipe"></GoodsRecommend>
         <!-- 1F休闲食品 -->
@@ -32,6 +39,8 @@
         <!-- <div class="perch"></div> -->
       </better-scroll>
     </van-pull-refresh>
+    <!-- 加载 -->
+    <van-loading size="24px" vertical v-else>加载中...</van-loading>
   </div>
 </template>
 
@@ -67,6 +76,7 @@ export default {
           this.list = res.data;
           this.picture = res.data.advertesPicture.PICTURE_ADDRESS;
           this.floorname = res.data.floorName;
+          this.$store.state.category = res.data.category;
           // console.log(floorname);
         })
         .catch(err => {
@@ -152,11 +162,16 @@ export default {
   width: 100vw;
   margin-bottom: 10px;
   height: 33.4px;
-  img{
+  img {
     width: 100%;
   }
 }
 .home {
   padding-bottom: 13.333vw;
+}
+
+.wrapper {
+  height: 83vh;
+  overflow: hidden;
 }
 </style>

@@ -198,6 +198,7 @@ export default {
     }
   },
   mounted() {
+    this.changeCaptcha();
   },
   watch: {},
   computed: {},

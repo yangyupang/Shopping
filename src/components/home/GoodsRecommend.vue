@@ -60,7 +60,7 @@ export default {
 <style scoped lang='scss'>
 .goodsrecommend {
   background-color: #fff;
-  height: 240px;
+  height: 245px;
   .recommended {
     font-size: 16px;
     padding: 10px;
@@ -82,8 +82,8 @@ export default {
   white-space: nowrap;
   padding: 5px;
   .box-item {
-    border-top:1px solid rgb(233,232,232);
-    border-right:1px solid rgb(233,232,232);
+    border-top: 1px solid rgb(233, 232, 232);
+    border-right: 1px solid rgb(233, 232, 232);
     .goodsname {
       font-size: 14px;
       width: 124px;
@@ -91,6 +91,7 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: center;
+      padding: 1px;
     }
     .price {
       display: flex;
@@ -112,7 +113,8 @@ export default {
       color: #fff;
       display: flex;
       font-size: 16px;
-      padding: 5px 10px;
+      justify-content: center;
+      // padding: 5px 10px;
       .details-icon {
         background-color: rgb(250, 189, 57);
         padding: 3px;

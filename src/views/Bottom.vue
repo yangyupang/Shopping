@@ -2,11 +2,11 @@
   <!-- 底部父路由 -->
   <div>
     <router-view />
-    <van-tabbar route>
-      <van-tabbar-item replace to="/home" icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item replace to="/classify" icon="points">分类</van-tabbar-item>
-      <van-tabbar-item replace to="/shoppingcart" icon="shopping-cart-o">购物车</van-tabbar-item>
-      <van-tabbar-item replace to="/my" icon="manager-o">我的</van-tabbar-item>
+    <van-tabbar v-model="active">
+      <van-tabbar-item replace to="/home" icon="home-o" name="home">首页</van-tabbar-item>
+      <van-tabbar-item replace to="/classify" icon="points" name="classify">分类</van-tabbar-item>
+      <van-tabbar-item replace to="/shoppingcart" icon="shopping-cart-o" name="shoppingcart">购物车</van-tabbar-item>
+      <van-tabbar-item replace to="/my" icon="manager-o" name="my">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -14,12 +14,22 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      active: "home"
+    };
   },
   components: {},
-  methods: {},
-  mounted() {},
-  watch: {},
+  methods: {
+  },
+  mounted() {
+    this.active=this.$route.name;
+  },
+  watch: {
+    '$route'(val){
+      // console.log(val);
+      this.active= val.name
+    }
+  },
   computed: {},
   filters: {}
 };
@@ -31,7 +41,7 @@ export default {
 //   justify-content:space-around;
 //   z-index: 999 !important;
 // }
-/deep/.van-tabbar{
+/deep/.van-tabbar {
   height: 10vh;
 }
 </style>

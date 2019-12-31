@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="recommend">
-      <div v-for="(item,index) in recommend" :key="index" class="recommends">
+      <div v-for="(item,index) in recommend" :key="index" class="recommends" @click="goClassify(item.mallCategoryId)">
         <img :src="item.image" alt />
         <span>{{item.mallCategoryName}}</span>
       </div>
@@ -21,7 +21,11 @@ export default {
     }
   },
   components: {},
-  methods: {},
+  methods: {
+    goClassify(val){
+      this.$router.push({name:'classify',params: {CategoryId:val}});
+    }
+  },
   mounted() {},
   watch: {},
   computed: {},

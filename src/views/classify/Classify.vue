@@ -4,20 +4,29 @@
     <my-top class="classify-top">
       <div slot="centre" class="classify-title">商品分类</div>
     </my-top>
+
     <div class="classify-content">
-      <van-sidebar v-model="activeKey" @change="onChange">
+      <!-- 侧边栏 -->
+      <van-sidebar v-model="CategoryId" @change="onChange">
         <van-sidebar-item
           :title="item.mallCategoryName"
           v-for="(item,index) in categorylist"
           :key="index"
         />
       </van-sidebar>
-      <div v-if="this.num === 0" class="classify-details">
-        <div v-for="(item,index) in categorylist" :key="index">
-          <van-tabs v-if="item.mallCategoryId === '1'" @click="onClick" title-active-color="red" :ellipsis="false">
-            <better-scroll>
+      <!-- 商品数据 -->
+      <div class="classify-details">
+        <div>
+          <van-tabs
+            v-if="categorylist[CategoryId]"
+            @click="onClick"
+            title-active-color="red"
+            :ellipsis="false"
+            v-model="active"
+          >
+            <better-scroll class="wrapper" v-if="categorylist[CategoryId]">
               <van-tab
-                v-for="item0 in item.bxMallSubDto"
+                v-for="item0 in categorylist[CategoryId].bxMallSubDto"
                 :key="item0.id"
                 :title="item0.mallSubName"
                 :name="item0.mallSubId"
@@ -37,118 +46,8 @@
                 <!-- {{item0.mallSubId}} -->
               </van-tab>
             </better-scroll>
-          </van-tabs>
-        </div>
-      </div>
-      <div v-if="this.num === 1" class="classify-details">
-        <div v-for="(item,index) in categorylist" :key="index">
-          <van-tabs v-if="item.mallCategoryId === '2'" @click="onClick" title-active-color="red" :ellipsis="false">
-            <better-scroll>
-              <van-tab
-                v-for="item0 in item.bxMallSubDto"
-                :key="item0.id"
-                :title="item0.mallSubName"
-                :name="item0.mallSubId"
-              >
-                <div class="classification" v-for="item1 in classificationlist" :key="item1.id">
-                  <div class="goods-img">
-                    <img :src="item1.image" alt />
-                  </div>
-                  <div class="goods-describe">
-                    <div class="goods-name">{{item1.name}}</div>
-                    <div class="goods-price">
-                      <div>￥{{item1.present_price}}</div>
-                      <div>￥{{item1.orl_price}}</div>
-                    </div>
-                  </div>
-                </div>
-                <!-- {{item0.mallSubId}} -->
-              </van-tab>
-            </better-scroll>
-          </van-tabs>
-        </div>
-      </div>
-      <div v-if="this.num === 2" class="classify-details">
-        <div v-for="(item,index) in categorylist" :key="index">
-          <van-tabs v-if="item.mallCategoryId === '3'" @click="onClick" title-active-color="red" :ellipsis="false">
-            <better-scroll>
-              <van-tab
-                v-for="item0 in item.bxMallSubDto"
-                :key="item0.id"
-                :title="item0.mallSubName"
-                :name="item0.mallSubId"
-              >
-                <div class="classification" v-for="item1 in classificationlist" :key="item1.id">
-                  <div class="goods-img">
-                    <img :src="item1.image" alt />
-                  </div>
-                  <div class="goods-describe">
-                    <div class="goods-name">{{item1.name}}</div>
-                    <div class="goods-price">
-                      <div>￥{{item1.present_price}}</div>
-                      <div>￥{{item1.orl_price}}</div>
-                    </div>
-                  </div>
-                </div>
-                <!-- {{item0.mallSubId}} -->
-              </van-tab>
-            </better-scroll>
-          </van-tabs>
-        </div>
-      </div>
-      <div v-if="this.num === 3" class="classify-details">
-        <div v-for="(item,index) in categorylist" :key="index">
-          <van-tabs v-if="item.mallCategoryId === '4'" @click="onClick" title-active-color="red" :ellipsis="false">
-            <better-scroll>
-              <van-tab
-                v-for="item0 in item.bxMallSubDto"
-                :key="item0.id"
-                :title="item0.mallSubName"
-                :name="item0.mallSubId"
-              >
-                <div class="classification" v-for="item1 in classificationlist" :key="item1.id">
-                  <div class="goods-img">
-                    <img :src="item1.image" alt />
-                  </div>
-                  <div class="goods-describe">
-                    <div class="goods-name">{{item1.name}}</div>
-                    <div class="goods-price">
-                      <div>￥{{item1.present_price}}</div>
-                      <div>￥{{item1.orl_price}}</div>
-                    </div>
-                  </div>
-                </div>
-                <!-- {{item0.mallSubId}} -->
-              </van-tab>
-            </better-scroll>
-          </van-tabs>
-        </div>
-      </div>
-      <div v-if="this.num === 4" class="classify-details">
-        <div v-for="(item,index) in categorylist" :key="index">
-          <van-tabs v-if="item.mallCategoryId === '5'" @click="onClick" title-active-color="red" :ellipsis="false">
-            <better-scroll>
-              <van-tab
-                v-for="item0 in item.bxMallSubDto"
-                :key="item0.id"
-                :title="item0.mallSubName"
-                :name="item0.mallSubId"
-              >
-                <div class="classification" v-for="item1 in classificationlist" :key="item1.id">
-                  <div class="goods-img">
-                    <img :src="item1.image" alt />
-                  </div>
-                  <div class="goods-describe">
-                    <div class="goods-name">{{item1.name}}</div>
-                    <div class="goods-price">
-                      <div>￥{{item1.present_price}}</div>
-                      <div>￥{{item1.orl_price}}</div>
-                    </div>
-                  </div>
-                </div>
-                <!-- {{item0.mallSubId}} -->
-              </van-tab>
-            </better-scroll>
+                        <!-- 加载 -->
+            <van-loading size="24px" vertical v-else>加载中...</van-loading>
           </van-tabs>
         </div>
       </div>
@@ -160,67 +59,24 @@
 export default {
   data() {
     return {
-      activeKey: 0,
-      categorylist: [],
-      num: 0,
-      classificationlist: []
+      CategoryId: 0,
+      // categorylist: [],
+      classificationlist: [],
+      active: 0,
+      default: 0
     };
   },
   components: {},
   methods: {
+    // 点击侧边栏切换商品显示的默认值
     onChange(index) {
-      // this.$toast(index);
-      this.num = index;
-      if (index === 0) {
-        //默认新鲜水果的热带水果项
+      this.active = 0;
+      if (index !== "") {
+        // 点击侧边栏切换商品显示的默认值
         this.$api
-          .category("2c9f6c946016ea9b016016f79c8e0000")
+          .category(this.categorylist[index].bxMallSubDto[0].mallSubId)
           .then(res => {
-            // console.log(res);
-            this.classificationlist = res.dataList;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      } else if (index === 1) {
-        //默认中外名酒的白酒项
-        this.$api
-          .category("2c9f6c9460337d540160337fefd60000")
-          .then(res => {
-            // console.log(res);
-            this.classificationlist = res.dataList;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      } else if (index === 2) {
-        //默认营养奶品的鲜奶选项
-        this.$api
-          .category("402880e86016d1b5016016e135440011")
-          .then(res => {
-            // console.log(res);
-            this.classificationlist = res.dataList;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      } else if (index === 3) {
-        //默认食品饮料的饼干糕点选项
-        this.$api
-          .category("2c9f6c94609a62be0160a02d1dc20021")
-          .then(res => {
-            // console.log(res);
-            this.classificationlist = res.dataList;
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      } else if (index === 4) {
-        //默认个人护理的进口护理选项
-        this.$api
-          .category("2c9f6c94621970a801626a35cb4d0175")
-          .then(res => {
-            // console.log(res);
+            // console.log(res.dataList);
             this.classificationlist = res.dataList;
           })
           .catch(err => {
@@ -228,6 +84,7 @@ export default {
           });
       }
     },
+    //点击请求商品对应详情
     onClick(name, title) {
       // this.$toast(title);//title是标题名字
       // this.$toast(name); //name我绑定的是水果的mallSubId
@@ -241,23 +98,11 @@ export default {
           console.log(err);
         });
     },
-    // 侧边栏数据
-    recommend() {
-      this.$api
-        .recommend()
-        .then(res => {
-          this.categorylist = res.data.category;
-          // console.log(floorname);
-        })
-        .catch(err => {
-          console.log(err);
-          get;
-        });
-    },
-    //初始化数据 默认新鲜水果的热带水果选项
+    //初始化数据 默认新鲜水果的热带水果选项（直接点击分类时看见的数据）
     getClassification() {
+      this.default = this.categorylist[0].bxMallSubDto[0].mallSubId;
       this.$api
-        .category("2c9f6c946016ea9b016016f79c8e0000")
+        .category(this.default)
         .then(res => {
           // console.log(res);
           this.classificationlist = res.dataList;
@@ -265,14 +110,39 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    //点击对应跳转到分类时高亮的显示 没点击时初始化数据 默认新鲜水果的热带水果选项
+    getid() {
+      //点击对应跳转到分类时高亮的显示 并展示第一类商品内容
+      if (this.$route.params.CategoryId) {
+        this.CategoryId = Number(this.$route.params.CategoryId) - 1;
+        // console.log(this.categorylist);
+        this.$api
+          .category(
+            this.categorylist[this.CategoryId].bxMallSubDto[0].mallSubId
+          )
+          .then(res => {
+            // console.log(res);
+            this.classificationlist = res.dataList;
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        // 调用   初始化数据 默认新鲜水果的热带水果选项（直接点击分类时看见的数据）
+        this.getClassification();
+      }
     }
   },
   mounted() {
-    this.recommend();
-    this.getClassification();
+    this.getid();
   },
   watch: {},
-  computed: {},
+  computed: {
+    categorylist() {
+      return this.$store.state.category;
+    }
+  },
   filters: {}
 };
 </script>
@@ -298,11 +168,13 @@ export default {
   .classification {
     display: flex;
     background-color: #fff;
+    border-bottom: 1px solid #dfdede;
     .goods-img {
       width: 134px;
       padding: 10px;
       img {
         width: 134px;
+        border: 1px solid #c7c4c4;
       }
     }
     .goods-describe {
@@ -330,5 +202,9 @@ export default {
       }
     }
   }
+}
+.wrapper {
+  height: 75vh;
+  overflow: hidden;
 }
 </style>

@@ -153,3 +153,15 @@
 2019-12-30 20:12:50,763 INFO 16548 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
 2019-12-30 20:12:50,763 INFO 16548 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
 2019-12-30 20:12:50,763 INFO 16548 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2019-12-31 07:59:59,359 INFO 4508 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2019-12-31 07:59:59,359 INFO 4508 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2019-12-31 07:59:59,360 INFO 4508 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2019-12-31 08:00:13,718 INFO 1376 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 73786288ms at 2020-01-01 04:30:00.006
+2019-12-31 08:00:13,720 INFO 1376 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 57586281ms at 2020-01-01 00:00:00.001
+2019-12-31 08:00:13,721 INFO 1376 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 57587280ms at 2020-01-01 00:00:01.001
+2019-12-31 08:00:28,318 INFO 15496 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2019-12-31 08:00:28,318 INFO 15496 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2019-12-31 08:00:28,319 INFO 15496 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2019-12-31 08:01:14,194 INFO 4160 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2019-12-31 08:01:14,194 INFO 4160 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2019-12-31 08:01:14,194 INFO 4160 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js

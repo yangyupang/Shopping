@@ -11,15 +11,15 @@
           <img :src="goods[0].image" alt />
         </div>
         <div>
-          <img :src="goods[3].image" alt />
+          <img :src="goods[3].image" alt class="left-img2" />
         </div>
       </div>
       <div class="floorgood-rigth">
         <div>
-          <img :src="goods[1].image" alt />
+          <img :src="goods[1].image" alt  class="rigth-img"/>
         </div>
         <div>
-          <img :src="goods[2].image" alt />
+          <img :src="goods[2].image" alt  class="rigth-img"/>
         </div>
         <div>
           <img :src="goods[4].image" alt />
@@ -84,19 +84,24 @@ export default {
     background-color: #fff;
     .floorgood-left {
       div {
-        border-right: 1px solid rgb(233,232,232);
+        border-right: 1px solid rgb(233, 232, 232);
         img {
           width: 100%;
         }
+      }
+      .left-img2 {
+        border-top: 1px solid rgb(233, 232, 232);
       }
     }
   }
   .floorgood-rigth {
     div {
-      border-bottom: 1px solid rgb(233,232,232);
       img {
         width: 100%;
       }
+    }
+    .rigth-img{
+      border-bottom: 1px solid rgb(233, 232, 232);
     }
   }
 }
