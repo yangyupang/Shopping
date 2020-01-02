@@ -1,10 +1,9 @@
 <template>
-  <!-- 分类 父路由 -->
+  <!-- 分类  -->
   <div>
     <my-top class="classify-top">
       <div slot="centre" class="classify-title">商品分类</div>
     </my-top>
-
     <div class="classify-content">
       <!-- 侧边栏 -->
       <van-sidebar v-model="CategoryId" @change="onChange">
@@ -31,7 +30,12 @@
                 :title="item0.mallSubName"
                 :name="item0.mallSubId"
               >
-                <div class="classification" v-for="item1 in classificationlist" :key="item1.id">
+                <div
+                  class="classification"
+                  v-for="item1 in classificationlist"
+                  :key="item1.id"
+                  @click="details(item1.id)"
+                >
                   <div class="goods-img">
                     <img :src="item1.image" alt />
                   </div>
@@ -46,7 +50,7 @@
                 <!-- {{item0.mallSubId}} -->
               </van-tab>
             </better-scroll>
-                        <!-- 加载 -->
+            <!-- 加载 -->
             <van-loading size="24px" vertical v-else>加载中...</van-loading>
           </van-tabs>
         </div>
@@ -57,6 +61,7 @@
 
 <script>
 export default {
+  // name:'classify',
   data() {
     return {
       CategoryId: 0,
@@ -132,6 +137,9 @@ export default {
         // 调用   初始化数据 默认新鲜水果的热带水果选项（直接点击分类时看见的数据）
         this.getClassification();
       }
+    },
+    details(id) {
+      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
     }
   },
   mounted() {

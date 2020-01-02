@@ -180,6 +180,7 @@ export default {
             this.$toast(res.msg);
             this.changeCaptcha();
             this.$router.go(-1);
+            localStorage.setItem("args", JSON.stringify(res.userInfo));
           } else if (res.code === -1) {
             this.$toast(res.msg);
             this.username = this.password = this.verify = "";
@@ -236,7 +237,7 @@ export default {
   position: relative;
   top: 32vw;
   width: 93vw;
-  height: 76vh;
+  height: 68vh;
   margin: 0 auto;
   padding: 10px 7px;
   box-shadow: -2px 3px 23px 1px rgba(0, 0, 0, 0.1);

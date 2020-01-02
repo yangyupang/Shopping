@@ -3,7 +3,7 @@
   <div class="container">
     <van-swipe :autoplay="3000" indicator-color="white" :stop-propagation="false">
       <van-swipe-item v-for="(item,index) in swipelist" :key="index">
-        <img :src="item.image" alt class="swipeImage" />
+        <img :src="item.image" alt class="swipeImage" @click="details(item.goodsId)" />
       </van-swipe-item>
     </van-swipe>
   </div>
@@ -21,7 +21,11 @@ export default {
     }
   },
   components: {},
-  methods: {},
+  methods: {
+    details(id){
+      this.$router.push({name:'commoditydetails',params: {goodsId:id}})
+    }
+  },
   mounted() {},
   watch: {},
   computed: {},

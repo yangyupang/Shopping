@@ -76,10 +76,10 @@ export default {
      * isCollection     查询商品是否已收藏      参数：  id:商品的id
      * addShop          加入购物车             参数：  id:商品的id
      */
-    goodOne({
+    goodOne(
         id,
         page = 1
-    }) {
+    ) {
         return service.req(`/goods/one?id=${id}&page=${page}`)
     },
 
@@ -87,19 +87,19 @@ export default {
         return service.req('/collection', goods)
     },
 
-    cancelCollection(id) {
+    cancelCollection({ id }) {
         return service.req('/cancelCollection', {
             id
         })
     },
 
-    isCollection(id) {
+    isCollection({ id }) {
         return service.req('/isCollection', {
             id
         })
     },
 
-    addShop(id) {
+    addShop({ id }) {
         return service.req('/addShop', {
             id
         })
@@ -115,7 +115,7 @@ export default {
      * comment  商品评论(id,rate,content, anonymous(是否匿名), _id, order_id, image=[])
      */
     loginOut() {
-        return service.req('/loginOut')
+        return service.req('/loginOut', {})
     },
 
     user() {
@@ -188,12 +188,8 @@ export default {
         })
     },
 
-    getCollection(page = 1) {
-        return service.req('/collection/list', {
-            params: {
-                page
-            }
-        })
+    getCollection() {
+        return service.req('/collection/list?page=1')
     },
     register({
         nickname,

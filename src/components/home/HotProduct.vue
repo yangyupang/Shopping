@@ -3,7 +3,12 @@
   <div class="hotproduct">
     <div class="hot">热销商品</div>
     <div class="product">
-      <div class="product-item" v-for="(item,index) in hotproduct" :key="index">
+      <div
+        @click="details(item.goodsId)"
+        class="product-item"
+        v-for="(item,index) in hotproduct"
+        :key="index"
+      >
         <img :src="item.image" alt />
         <div class="productname">{{item.name}}</div>
         <div class="price">
@@ -27,7 +32,11 @@ export default {
     }
   },
   components: {},
-  methods: {},
+  methods: {
+    details(id) {
+      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+    }
+  },
   mounted() {},
   watch: {},
   computed: {},

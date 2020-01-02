@@ -20,7 +20,8 @@ export default {
       this.bs = new BScroll(".wrapper", {
         scrollY: true,
         click: true,
-        probeType: 3 // listening scroll hook
+        probeType: 3// listening scroll hook
+
       });
     }
   },

@@ -1,3 +1,6 @@
 export default {
-    category: []
+    category: [],
+    city: "",
+    history: [],
+    search: [],
 }

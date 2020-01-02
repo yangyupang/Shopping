@@ -1,6 +1,7 @@
 <template>
   <!-- 底部父路由 -->
   <div>
+    <!-- <keep-alive include="classify"></keep-alive> -->
     <router-view />
     <van-tabbar v-model="active">
       <van-tabbar-item replace to="/home" icon="home-o" name="home">首页</van-tabbar-item>
@@ -19,15 +20,14 @@ export default {
     };
   },
   components: {},
-  methods: {
-  },
+  methods: {},
   mounted() {
-    this.active=this.$route.name;
+    this.active = this.$route.name;
   },
   watch: {
-    '$route'(val){
+    $route(val) {
       // console.log(val);
-      this.active= val.name
+      this.active = val.name;
     }
   },
   computed: {},

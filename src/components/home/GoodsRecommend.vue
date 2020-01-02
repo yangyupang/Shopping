@@ -17,7 +17,7 @@
               <div class="details-icon">
                 <van-icon name="cart" />
               </div>
-              <div class="details-text">商品详情</div>
+              <div class="details-text" @click="details(item.goodsId)">商品详情</div>
             </div>
           </div>
         </div>
@@ -46,6 +46,9 @@ export default {
         click: false,
         probeType: 3 // listening scroll hook
       });
+    },
+    details(id) {
+      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
     }
   },
   mounted() {
