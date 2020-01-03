@@ -7,7 +7,7 @@
         <img src="../../src/assets/img/city-icon.svg" alt />
       </div>
       <div slot="centre" class="search">
-        <van-search placeholder="请输入搜索关键词" v-model="searchValue" />
+        <van-search placeholder="请输入搜索关键词" v-model="searchValue" @focus="focusing" />
       </div>
       <div slot="right" class="closeSearch" v-if="show" @click="closeSearch">取消</div>
     </my-top>
@@ -41,33 +41,68 @@
     </van-pull-refresh>
     <!-- 加载 -->
     <van-loading size="24px" vertical v-else>加载中...</van-loading>
-
     <van-popup v-model="show" position="bottom" :style="{ height: '92.2%' }" :overlay="false">
-      <div v-if="this.$store.state.search.length !==0" class="search-history">
-        <div class="history">
-          <div
-            v-for="item in search"
-            :key="item.id"
-            class="history-item"
-            @click="history(item)"
-          >{{item}}</div>
+      <div v-if="searchlist.length !==0">
+        <div v-if="this.$store.state.search.length !==0" class="search-history">
+          <div style="padding:10px 0 0 10px">历史记录</div>
+          <div class="histor">
+            <div class="history">
+              <div
+                v-for="item in search"
+                :key="item.id"
+                class="history-item"
+                @click="history(item)"
+              >{{item}}</div>
+            </div>
+            <div class="empty" @click="empty">清除</div>
+          </div>
         </div>
-        <div class="empty" @click="empty">清除</div>
+        <!-- <div  @click="details(item.id)"></div><div class="itemname" v-html="item.name"></div> -->
+        <goods-card v-for="(item,index) in searchlist" :key="index" class="sty">
+          <div slot="left" class="goods-img" @click="details(item.id)">
+            <div class="imgs">
+              <img :src="item.image_path" alt />
+            </div>
+          </div>
+          <div slot="centre" class="goods" @click="details(item.id)">
+            <div class="goods-name" v-html="item.name"></div>
+            <div class="goods-price">￥{{item.present_price}}</div>
+          </div>
+          <!-- <div slot="right" style="width: 50px;"></div> -->
+          <!-- <van-divider /> -->
+        </goods-card>
       </div>
-      <div v-for="item in searchlist" :key="item.id" @click="details(item.id)">
-        <div class="itemname">{{item.name}}</div>
-        <van-divider />
+      <div v-else>
+        <div v-if="this.$store.state.search.length !==0" class="search-history">
+          <div style="padding:10px 0 0 10px">历史记录</div>
+          <div class="histor">
+            <div class="history">
+              <div
+                v-for="item in search"
+                :key="item.id"
+                class="history-item"
+                @click="history(item)"
+              >{{item}}</div>
+            </div>
+            <div class="empty" @click="empty">清除</div>
+          </div>
+        </div>
+        <div v-else class="no-data">暂无数据</div>
       </div>
     </van-popup>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import GoodsShuffling from "../../src/components/home/GoodsShuffling";
 import Recommend from "../../src/components/home/Recommend";
 import GoodsRecommend from "../../src/components/home/GoodsRecommend";
 import FloorGoods from "../../src/components/home/FloorGoods";
 import HotProduct from "../../src/components/home/HotProduct";
+import util from "../../src/assets/js/util.js";
+Vue.prototype.$util = util;
+
 export default {
   data() {
     return {
@@ -117,17 +152,32 @@ export default {
         this.$toast("定位中~请稍后。。。");
       } else this.$router.push({ name: "city", params: { city: val } });
     },
+    //输入框聚焦时弹出
+    focusing() {
+      this.show = true;
+    },
     //关闭搜索
     closeSearch() {
-      // if (this.$store.state.search) {}
-      if (!this.$store.state.search.some(item => item === this.searchValue)) {
-        this.$store.state.search.push(this.searchValue);
-      }
       this.searchValue = "";
+      this.searchlist = [];
+      this.show = false;
     },
     //清空搜索记录
     empty() {
-      this.$store.state.search = [];
+      this.$dialog
+        .confirm({
+          title: "删除历史记录",
+          message: "您确定要删除吗？"
+        })
+        .then(() => {
+          this.$store.state.search = [];
+          this.$toast("删除成功");
+          // on confirm
+        })
+        .catch(() => {
+          this.$toast("您取消了删除操作");
+          // on cancel
+        });
     },
     //点击历史纪录用于搜索
     history(val) {
@@ -136,9 +186,13 @@ export default {
     //跳转详情
     details(id) {
       this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+      if (!this.$store.state.search.some(item => item === this.searchValue)) {
+        this.$store.state.search.push(this.searchValue);
+      }
     }
   },
   mounted() {
+    // console.log(this.$util);
     let _this = this;
     var map = new AMap.Map("container", {
       resizeEnable: true
@@ -169,19 +223,24 @@ export default {
   watch: {
     //搜索赋值
     searchValue(val) {
-      if (val !== "") {
+      // console.log(val);
+      // console.log(newval);
+      if (val.trim() !== "") {
         this.show = true;
         this.$api
-          .search({ value: val, page: 1 })
+          .search({ value: val.trim(), page: 1 })
           .then(res => {
+            // console.log(res.data.list);
             this.searchlist = res.data.list;
-            // console.log(res);
+            this.searchlist.forEach(item => {
+              item.name = this.$util.keyWord(item.name, val.trim());
+            });
           })
           .catch(err => {
             console.log(err);
           });
-      } else {
-        this.show = false;
+      } else if(val === "") {
+        this.searchlist = [];
       }
     }
   },
@@ -193,11 +252,7 @@ export default {
       return this.$store.state.search;
     }
   },
-  filters: {
-    // coloring(val) {
-    //   return JSON.stringify(this.searchlist).includes(val);
-    // }
-  }
+  filters: {}
 };
 </script>
 
@@ -260,21 +315,24 @@ export default {
 }
 //搜索历史
 .search-history {
-  display: flex;
-  .history {
-    width: 80%;
-    font-size: 16px;
+  font-size: 16px;
+  //历史纪录展示
+  .histor {
     display: flex;
-    flex-wrap: wrap;
-    // justify-content: space-around;
-    .history-item {
-      height: 15px;
-      line-height: 15px;
-      text-align: center;
-      padding: 5px;
-      border: 1px solid black;
-      border-radius: 5px;
-      margin: 10px;
+    .history {
+      width: 80%;
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: space-around;
+      .history-item {
+        height: 15px;
+        line-height: 15px;
+        text-align: center;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px;
+      }
     }
   }
   .empty {
@@ -286,6 +344,35 @@ export default {
     text-align: center;
     padding: 5px;
     margin-top: 10px;
+  }
+}
+.no-data {
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 0;
+}
+.goods-img {
+  .imgs {
+    width: 115px;
+    padding: 5px;
+  }
+  img {
+    width: 103px;
+  }
+}
+.goods {
+  font-size: 16px;
+  .goods-name {
+    padding: 10px 0;
+  }
+  .goods-price {
+    color: red;
+    margin-top: 40px;
+  }
+}
+.sty {
+  /deep/ .card {
+    justify-content: flex-start !important;
   }
 }
 </style>

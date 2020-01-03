@@ -9,20 +9,22 @@
         <div slot="centre" class="history">历史浏览</div>
       </my-top>
     </van-sticky>
-    <goods-card v-for="item in history" :key="item.id">
-      <div slot="left" class="goods-img">
-        <div class="imgs">
-          <img :src="item.image_path" alt />
+    <better-scroll class="wrapper">
+      <goods-card v-for="item in history" :key="item.id" class="historycard">
+        <div slot="left" class="goods-img" @click="details(item.id)">
+          <div class="imgs">
+            <img :src="item.image_path" alt />
+          </div>
         </div>
-      </div>
-      <div slot="centre" class="goods">
-        <div class="goods-name">{{item.name}}</div>
-        <div class="goods-price">￥{{item.present_price}}</div>
-      </div>
-      <div slot="right" class="cancel" @click="cancel(item)">
-        <van-icon name="close" />
-      </div>
-    </goods-card>
+        <div slot="centre" class="goods" @click="details(item.id)">
+          <div class="goods-name">{{item.name}}</div>
+          <div class="goods-price">￥{{item.present_price}}</div>
+        </div>
+        <div slot="right" class="cancel" @click="cancel(item)">
+          <van-icon name="close" />
+        </div>
+      </goods-card>
+    </better-scroll>
   </div>
 </template>
 
@@ -37,39 +39,28 @@ export default {
       this.$router.go(-1);
     },
     cancel(val) {
-      this.$dialog.confirm({
-        title: "删除最近浏览",
-        message: "您确定要删除吗？"
-      })
+      this.$dialog
+        .confirm({
+          title: "删除最近浏览",
+          message: "您确定要删除吗？"
+        })
         .then(() => {
           this.$store.state.history = this.$store.state.history.filter(item => {
             return item !== val;
           });
-           this.$toast("删除成功")
+          this.$toast("删除成功");
           // on confirm
         })
         .catch(() => {
-          this.$toast("您取消了删除操作")
+          this.$toast("您取消了删除操作");
           // on cancel
         });
+    },
+    details(id) {
+      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
     }
-    // //获取收藏数据
-    // getCollection() {
-    //   this.$api
-    //     .getCollection()
-    //     .then(res => {
-    //       this.Collectionlist = res.data.list;
-    //       // console.log(res);
-    //       // console.log(this.Collectionlist);
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // }
   },
-  mounted() {
-    // this.getCollection();
-  },
+  mounted() {},
   watch: {},
   computed: {
     history() {
@@ -113,5 +104,12 @@ export default {
 .cancel {
   height: 16px;
   margin-top: 50px;
+}
+.wrapper {
+  height: 92vh;
+  overflow: hidden;
+}
+.historycard {
+  height: 113px;
 }
 </style>

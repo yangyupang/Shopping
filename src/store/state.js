@@ -3,4 +3,5 @@ export default {
     city: "",
     history: [],
     search: [],
+    shoppingcart: [],
 }

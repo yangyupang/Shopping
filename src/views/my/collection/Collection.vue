@@ -9,20 +9,22 @@
         <div slot="centre" class="collection">我的收藏</div>
       </my-top>
     </van-sticky>
-    <goods-card v-for="item in Collectionlist" :key="item.id">
-      <div slot="left" class="goods-img">
-        <div class="imgs">
-          <img :src="item.image_path" alt />
+    <better-scroll class="wrapper">
+      <goods-card v-for="item in Collectionlist" :key="item.id" class="collectioncard">
+        <div slot="left" class="goods-img" @click="details(item.cid)">
+          <div class="imgs">
+            <img :src="item.image_path" alt />
+          </div>
         </div>
-      </div>
-      <div slot="centre" class="goods">
-        <div class="goods-name">{{item.name}}</div>
-        <div class="goods-price">￥{{item.present_price}}</div>
-      </div>
-      <div slot="right" class="cancel" @click="cancel(item.cid)">
-        <van-icon name="close" />
-      </div>
-    </goods-card>
+        <div slot="centre" class="goods" @click="details(item.cid)">
+          <div class="goods-name">{{item.name}}</div>
+          <div class="goods-price">￥{{item.present_price}}</div>
+        </div>
+        <div slot="right" class="cancel" @click="cancel(item.cid)">
+          <van-icon name="close" />
+        </div>
+      </goods-card>
+    </better-scroll>
   </div>
 </template>
 
@@ -70,11 +72,14 @@ export default {
         .then(res => {
           this.Collectionlist = res.data.list;
           // console.log(res);
-          // console.log(this.Collectionlist);
+          console.log(this.Collectionlist);
         })
         .catch(err => {
           console.log(err);
         });
+    },
+    details(id) {
+      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
     }
   },
   mounted() {
@@ -119,5 +124,12 @@ export default {
 .cancel {
   height: 16px;
   margin-top: 50px;
+}
+.wrapper {
+  height: 92vh;
+  overflow: hidden;
+}
+.collectioncard {
+  height: 113px;
 }
 </style>

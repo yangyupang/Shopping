@@ -14,7 +14,7 @@
               <span>￥{{item.price}}</span>
             </div>
             <div class="details">
-              <div class="details-icon">
+              <div class="details-icon" @click="addShop(item.goodsId)">
                 <van-icon name="cart" />
               </div>
               <div class="details-text" @click="details(item.goodsId)">商品详情</div>
@@ -30,7 +30,9 @@
 import BScroll from "better-scroll";
 export default {
   data() {
-    return {};
+    return {
+      username: ""
+    };
   },
   props: {
     goodsrecommend: {
@@ -47,12 +49,32 @@ export default {
         probeType: 3 // listening scroll hook
       });
     },
+    //跳转详情
     details(id) {
       this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+    },
+    //加入购物车
+    addShop(id) {
+      if (this.username !== "") {
+        this.$api
+          .addShop({ id: id })
+          .then(res => {
+            if (res.code === 200) {
+              this.$toast(res.msg);
+            }
+            // console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else this.$toast("亲！您还没有登录哟~");
     }
   },
   mounted() {
     this.init();
+    if (localStorage.getItem("args") !== "") {
+      this.username = JSON.parse(localStorage.getItem("args"));
+    }
   },
   watch: {},
   computed: {},

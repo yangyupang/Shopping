@@ -37,7 +37,7 @@ export default {
      * deleteShop   购物车商品删除      参数 id：需要删除的商品cid
      */
     getCard() {
-        return service.req('/getCard')
+        return service.req('/getCard', {})
     },
 
     editCart({

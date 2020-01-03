@@ -15,7 +15,7 @@
         <div class="icon" @click="back">
           <van-icon name="arrow-left" class="arrow" />
         </div>
-        <van-image-preview v-model="show" :images="images" @close="close">
+        <van-image-preview v-model="show" @change="onChange" :images="images" @close="close">
           <template v-slot:index>第{{ current +1 }}页</template>
         </van-image-preview>
       </div>
@@ -69,8 +69,8 @@
         <van-goods-action>
           <van-goods-action-icon icon="chat-o" text="客服" />
           <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
-          <van-goods-action-button type="warning" text="加入购物车" @click="onClickButton" />
-          <van-goods-action-button type="danger" text="立即购买" @click="onClickButton" />
+          <van-goods-action-button type="warning" text="加入购物车" @click="onClickJoin(detailsList.id)" />
+          <van-goods-action-button type="danger" text="立即购买" @click="onClickBy" />
         </van-goods-action>
       </div>
     </div>
@@ -85,6 +85,7 @@ export default {
       current: 0,
       falg: false,
       active: 0,
+      //存登录信息
       user: "",
       auto: 3000,
       show: false,
@@ -100,6 +101,7 @@ export default {
         .goodOne(this.$route.params.goodsId, 1)
         .then(res => {
           this.detailsList = res.goods.goodsOne;
+          // console.log(this.detailsList);
           this.images.push(res.goods.goodsOne.image);
         })
         .catch(err => {
@@ -172,14 +174,35 @@ export default {
         });
     },
     //点击进入购物车
-    onClickIcon() {},
-    //点加入购物车 或 直接购买
-    onClickButton() {}
+    onClickIcon() {
+      this.$router.push("/shoppingcart");
+    },
+    //点加入购物车
+    onClickJoin(id) {
+      if (this.user !== "") {
+        this.$api
+          .addShop({ id: id })
+          .then(res => {
+            if (res.code === 200) {
+              this.$toast(res.msg);
+            }
+            // console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else this.$toast("亲！您还没有登录哟~");
+    },
+    // 直接购买
+    onClickBy() {}
   },
   mounted() {
     this.getgoodsOne();
     this.getcancelCollection();
-    this.user = localStorage.getItem("args");
+    if (localStorage.getItem("args") !== "") {
+      this.user = localStorage.getItem("args");
+    }
+    
     // this.img;
   },
   watch: {},
@@ -187,9 +210,7 @@ export default {
   filters: {},
   beforeRouteLeave(to, from, next) {
     if (
-      !this.$store.state.history.some(item => 
-        item.id === this.detailsList.id
-      )
+      !this.$store.state.history.some(item => item.id === this.detailsList.id)
     ) {
       this.$store.state.history.push(this.detailsList);
     }

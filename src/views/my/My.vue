@@ -130,7 +130,7 @@ export default {
           this.$router.push("/myorder");
         }
       } else {
-        this.$toast("亲!你还没有登录哟~");
+        this.$toast("亲！您还没有登录哟~");
         this.active = "";
       }
     },
@@ -139,7 +139,7 @@ export default {
       if (this.username) {
         this.$router.push("/myorder");
       } else {
-        this.$toast("亲!你还没有登录哟~");
+        this.$toast("亲！您还没有登录哟~");
       }
     },
     //点击收藏页
@@ -147,7 +147,7 @@ export default {
       if (this.username) {
         this.$router.push("/collection");
       } else {
-        this.$toast("亲!你还没有登录哟~");
+        this.$toast("亲！您还没有登录哟~");
       }
     },
     //点击地址管理
@@ -155,7 +155,7 @@ export default {
       if (this.username) {
         this.$router.push("/addresslist");
       } else {
-        this.$toast("亲!你还没有登录哟~");
+        this.$toast("亲！您还没有登录哟~");
       }
     },
     //点击历史浏览
