@@ -139,6 +139,20 @@ export default {
     changeCaptcha() {
       this.verifyicon = "api/verify?time=" + Date.now();
     },
+    //获取购物车数据
+    getCard() {
+      this.$api
+        .getCard()
+        .then(res => {
+          this.cartlist = res.shopList;
+          if (res.shopList.length > 0) {
+            this.$store.state.shoppingcart = res.shopList;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     login() {
       this.$api
         .login({
@@ -152,6 +166,8 @@ export default {
             this.changeCaptcha();
             this.$router.go(-1);
             localStorage.setItem("args", JSON.stringify(res.userInfo));
+            //获取购物车数据
+            this.getCard();
           } else if (res.code === -1) {
             this.$toast(res.msg);
             this.username = this.password = this.verify = "";
@@ -181,6 +197,8 @@ export default {
             this.changeCaptcha();
             this.$router.go(-1);
             localStorage.setItem("args", JSON.stringify(res.userInfo));
+            //获取购物车数据
+            this.getCard();
           } else if (res.code === -1) {
             this.$toast(res.msg);
             this.username = this.password = this.verify = "";

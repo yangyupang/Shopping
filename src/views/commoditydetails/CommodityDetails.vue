@@ -69,7 +69,11 @@
         <van-goods-action>
           <van-goods-action-icon icon="chat-o" text="客服" />
           <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
-          <van-goods-action-button type="warning" text="加入购物车" @click="onClickJoin(detailsList.id)" />
+          <van-goods-action-button
+            type="warning"
+            text="加入购物车"
+            @click="onClickJoin(detailsList.id)"
+          />
           <van-goods-action-button type="danger" text="立即购买" @click="onClickBy" />
         </van-goods-action>
       </div>
@@ -185,6 +189,18 @@ export default {
           .then(res => {
             if (res.code === 200) {
               this.$toast(res.msg);
+              //获取购物车数据
+              this.$api
+                .getCard()
+                .then(res => {
+                  if (res.shopList.length > 0) {
+                    this.$store.state.shoppingcart = res.shopList;
+                    // console.log(res.shopList);
+                  }
+                })
+                .catch(err => {
+                  console.log(err);
+                });
             }
             // console.log(res);
           })
@@ -202,7 +218,7 @@ export default {
     if (localStorage.getItem("args") !== "") {
       this.user = localStorage.getItem("args");
     }
-    
+
     // this.img;
   },
   watch: {},

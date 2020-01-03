@@ -38,13 +38,15 @@ export default {
   },
   computed: {
     info() {
-      if (this.$store.state.shoppingcart) {
-        let num = 0;
-        this.$store.state.shoppingcart.map(item => {
-          num += Number(item.count);
-        });
-        return num;
-      }else return null;
+      if (this.$store.state.shoppingcart !== null) {
+        if (this.$store.state.shoppingcart.length > 0) {
+          let num = 0;
+          this.$store.state.shoppingcart.map(item => {
+            num += Number(item.count);
+          });
+          return num;
+        } else return null;
+      }
     }
   },
   filters: {}

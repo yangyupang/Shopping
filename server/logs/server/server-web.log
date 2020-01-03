@@ -124,3 +124,678 @@ hostname: �������С����
 pid: 19340
 hostname: �������С����
 
+2020-01-03 19:10:38,323 ERROR 19340 [-/127.0.0.1/-/8ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{ id: '02b10fc6f96a429e8112dc779fe3c988' }" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{ id: '02b10fc6f96a429e8112dc779fe3c988' }\""
+kind: "string"
+value: {"id":"02b10fc6f96a429e8112dc779fe3c988"}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{ id: '02b10fc6f96a429e8112dc779fe3c988' }\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 19340
+hostname: �������С����
+
+2020-01-03 19:11:36,536 ERROR 19340 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 19340
+hostname: �������С����
+
+2020-01-03 19:15:28,596 ERROR 17052 [-/127.0.0.1/-/3ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 17052
+hostname: �������С����
+
+2020-01-03 19:15:39,959 ERROR 17052 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 17052
+hostname: �������С����
+
+2020-01-03 19:16:44,843 ERROR 11944 [-/127.0.0.1/-/4ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:17:28,163 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:19:02,591 ERROR 11944 [-/127.0.0.1/-/3ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:19:13,656 ERROR 11944 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:20:17,368 ERROR 11944 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:22:47,378 ERROR 11944 [-/127.0.0.1/-/5ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:23,991 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:23,999 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,012 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,025 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,034 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,045 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,310 ERROR 11944 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,327 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,349 ERROR 11944 [-/127.0.0.1/-/3ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,360 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,369 ERROR 11944 [-/127.0.0.1/-/4ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,378 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,627 ERROR 11944 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,649 ERROR 11944 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,670 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,682 ERROR 11944 [-/127.0.0.1/-/1ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+
+2020-01-03 19:23:24,694 ERROR 11944 [-/127.0.0.1/-/2ms POST /v1/deleteShop] nodejs.CastError: Cast to string failed for value "{}" at path "cid" for model "ShopList"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at SchemaString.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:583:11)
+    at SchemaString.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at SchemaString.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at SchemaString.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\string.js:645:15)
+    at SchemaString.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:2826:8)
+    at model.Query._wrappedThunk [as _deleteMany] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{}\""
+kind: "string"
+value: {}
+path: "cid"
+reason: null
+message: "Cast to string failed for value \"{}\" at path \"cid\" for model \"ShopList\""
+name: "CastError"
+model: undefined
+pid: 11944
+hostname: �������С����
+

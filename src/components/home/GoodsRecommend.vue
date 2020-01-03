@@ -61,6 +61,18 @@ export default {
           .then(res => {
             if (res.code === 200) {
               this.$toast(res.msg);
+              //获取购物车数据
+              this.$api
+                .getCard()
+                .then(res => {
+                  if (res.shopList.length > 0) {
+                    this.$store.state.shoppingcart = res.shopList;
+                    // console.log(res.shopList);
+                  }
+                })
+                .catch(err => {
+                  console.log(err);
+                });
             }
             // console.log(res);
           })

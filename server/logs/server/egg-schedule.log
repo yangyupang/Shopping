@@ -231,3 +231,18 @@
 2020-01-03 08:12:38,760 INFO 14920 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 73041246ms at 2020-01-04 04:30:00.006
 2020-01-03 08:12:38,761 INFO 14920 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 56841240ms at 2020-01-04 00:00:00.001
 2020-01-03 08:12:38,762 INFO 14920 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 56842239ms at 2020-01-04 00:00:01.001
+2020-01-03 19:13:53,899 INFO 20276 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2020-01-03 19:13:53,899 INFO 20276 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-01-03 19:13:53,899 INFO 20276 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-01-03 19:14:00,659 INFO 19532 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2020-01-03 19:14:00,659 INFO 19532 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-01-03 19:14:00,659 INFO 19532 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-01-03 19:14:04,809 INFO 17052 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2020-01-03 19:14:04,809 INFO 17052 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-01-03 19:14:04,809 INFO 17052 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-01-03 19:16:11,407 INFO 11944 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js
+2020-01-03 19:16:11,407 INFO 11944 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js
+2020-01-03 19:16:11,407 INFO 11944 [egg-schedule]: register schedule C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js
+2020-01-03 19:16:12,871 INFO 3760 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-multipart@2.10.1@egg-multipart\app\schedule\clean_tmpdir.js next time will execute after 33227132ms at 2020-01-04 04:30:00.002
+2020-01-03 19:16:12,871 INFO 3760 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\clean_log.js next time will execute after 17027129ms at 2020-01-04 00:00:00.000
+2020-01-03 19:16:12,871 INFO 3760 [Timer] C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-logrotator@3.1.0@egg-logrotator\app\schedule\rotate_by_file.js next time will execute after 17028129ms at 2020-01-04 00:00:01.000

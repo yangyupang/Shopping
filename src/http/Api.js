@@ -53,7 +53,7 @@ export default {
     },
 
     deleteShop(id) {
-        return service.req('/deleteShop', id)
+        return service.req('/deleteShop', { _id: id })
     },
 
     // ===============================================================================================================

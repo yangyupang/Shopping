@@ -5,38 +5,43 @@
       <div slot="centre" class="shoppingcart-title">购物车</div>
     </my-top>
     <div class="shoppingcart-goods">
-      <div class="shoppingcart-login" v-if="loginobj">
-        <van-sticky :offset-top="50">
-          <div class="submit">
-            <van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
-            <div class="submit-right">
-              <div class="sum">
-                合计：
-                <span>￥{{sum}}</span>
-              </div>
-              <div class="but">
-                <van-button type="danger" size="mini" @click="del">删除</van-button>
-                <van-button type="danger" size="mini" @click="settlement">结算</van-button>
+      <div class="shoppingcart-login" v-if="loginobj && this.$store.state.shoppingcart">
+        <div v-if="this.$store.state.shoppingcart.length > 0" >
+          <van-sticky :offset-top="50">
+            <div class="submit">
+              <van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
+              <div class="submit-right">
+                <div class="sum">
+                  合计：
+                  <span>￥{{sum}}</span>
+                </div>
+                <div class="but">
+                  <van-button type="danger" size="mini" @click="del">删除</van-button>
+                  <van-button type="danger" size="mini" @click="settlement">结算</van-button>
+                </div>
               </div>
             </div>
-          </div>
-        </van-sticky>
-        <better-scroll class="wrapper">
-          <div v-for="(item,index) in cartlist" :key="index" class="shoppingcart">
-            <!-- 单选 -->
-            <van-checkbox v-model="item.check" @click="isCheck(index)"></van-checkbox>
-            <van-card
-              :num="item.count"
-              :price="item.present_price | price"
-              :title="item.name"
-              :thumb="item.image_path"
-            >
-              <div slot="footer">
-                <van-stepper v-model="item.count" />
-              </div>
-            </van-card>
-          </div>
-        </better-scroll>
+          </van-sticky>
+          <better-scroll class="wrapper">
+            <div v-for="(item,index) in cartlist" :key="index" class="shoppingcart">
+              <!-- 单选 -->
+              <van-checkbox v-model="item.check" @click="isCheck(index)"></van-checkbox>
+              <van-card
+                :num="item.count"
+                :price="item.present_price | price"
+                :title="item.name"
+                :thumb="item.image_path"
+              >
+                <div slot="footer">
+                  <van-stepper v-model="item.count" @change="add(item)" />
+                </div>
+              </van-card>
+            </div>
+          </better-scroll>
+        </div>
+        <div v-else class="login-nogoods">
+          <div style="font-size: 16px;text-align: center;padding: 15px;">啥都没有去挑点心仪的商品叭</div>
+        </div>
       </div>
       <div class="shoppingcart-logout" v-else>
         <div class="logout-img">
@@ -71,8 +76,11 @@ export default {
         .getCard()
         .then(res => {
           this.cartlist = res.shopList;
-          this.$store.state.shoppingcart = res.shopList;
-          console.log(res.shopList);
+          // console.log(res.shopList);
+          // if (res.shopList !== null) {}
+          if (res.shopList.length >= 0) {
+            this.$store.state.shoppingcart = res.shopList;
+          }
         })
         .catch(err => {
           console.log(err);
@@ -92,16 +100,44 @@ export default {
         return item.check;
       });
     },
+    //商品一加  商品减一
+    // onChange(value) {
+    //   this.$toast(value);
+    // },
+    //商品一加
+    add(item) {
+      this.$api.editCart({
+        count: item.count,
+        id: item.cid,
+        mallPrice: item.mallPrice
+      });
+    },
     //付款
     settlement() {},
     //删除商品
-    del() {}
+    del() {
+      // if(this.)
+      this.cartlist.map(item => {
+        if (item.check) {
+          // console.log(item.cid);
+          this.$api
+            .deleteShop(item.cid)
+            .then(res => {})
+            .catch(err => {
+              console.log(err);
+            });
+        }
+        this.getCard();
+      });
+      this.getCard();
+    }
   },
   mounted() {
     if (localStorage.getItem("args") !== "") {
       this.loginobj = localStorage.getItem("args");
     }
     this.getCard();
+    // console.log(this.$store.state.shoppingcart);
     // console.log(this.loginobj);
   },
   watch: {},
@@ -114,8 +150,7 @@ export default {
         }
       });
       return all.toFixed(2);
-    },
-
+    }
   },
   filters: {
     price(price) {
@@ -136,6 +171,7 @@ export default {
 }
 .shoppingcart-goods {
   width: 100%;
+  height: 540px;
   background-color: #fff;
   //未登录
   .shoppingcart-logout {
@@ -202,5 +238,8 @@ export default {
   .submit-right {
     line-height: 22px;
   }
+}
+.login-nogoods {
+  height: 540px;
 }
 </style>

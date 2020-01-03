@@ -106,6 +106,7 @@ export default {
           this.$toast("退出成功");
           this.username = "";
           localStorage.setItem("args", this.username);
+          this.$store.state.shoppingcart =  null;
         })
         .catch(err => {
           console.log(err);
