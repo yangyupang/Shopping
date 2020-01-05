@@ -850,3 +850,28 @@ model: undefined
 pid: 11944
 hostname: �������С����
 
+2020-01-05 16:50:08,103 ERROR 10108 [-/127.0.0.1/-/7ms POST /v1/deleteAddress] nodejs.CastError: Cast to ObjectId failed for value "{ id: '5e11a181f600c1277c0af823' }" at path "_id" for model "Address"
+    at new CastError (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\error\cast.js:39:11)
+    at ObjectId.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schema\objectid.js:246:11)
+    at ObjectId.SchemaType.applySetters (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:975:12)
+    at ObjectId.SchemaType._castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1389:15)
+    at ObjectId.SchemaType.castForQuery (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1379:15)
+    at ObjectId.SchemaType.castForQueryWrapper (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\schematype.js:1358:15)
+    at cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\cast.js:260:34)
+    at model.Query.Query.cast (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:4698:12)
+    at model.Query.Query._castConditions (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:1876:10)
+    at model.Query.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\query.js:3212:8)
+    at model.Query._wrappedThunk [as _findOneAndDelete] (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongoose@5.8.3@mongoose\lib\helpers\query\wrapThunk.js:16:8)
+    at C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_kareem@2.3.1@kareem\index.js:369:33
+    at processTicksAndRejections (internal/process/task_queues.js:75:11)
+stringValue: "\"{ id: '5e11a181f600c1277c0af823' }\""
+kind: "ObjectId"
+value: {"id":"5e11a181f600c1277c0af823"}
+path: "_id"
+reason: {}
+message: "Cast to ObjectId failed for value \"{ id: '5e11a181f600c1277c0af823' }\" at path \"_id\" for model \"Address\""
+name: "CastError"
+model: undefined
+pid: 10108
+hostname: �������С����
+

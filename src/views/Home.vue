@@ -189,6 +189,22 @@ export default {
       if (!this.$store.state.search.some(item => item === this.searchValue)) {
         this.$store.state.search.push(this.searchValue);
       }
+    },
+    //获取购物车数据
+    getCard() {
+      this.$api
+        .getCard()
+        .then(res => {
+          this.cartlist = res.shopList;
+          // console.log(res.shopList);
+          // if (res.shopList !== null) {}
+          if (res.shopList.length >= 0) {
+            this.$store.state.shoppingcart = res.shopList;
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   mounted() {
@@ -219,6 +235,7 @@ export default {
     //解析定位错误信息
     function onError(data) {}
     this.recommend();
+    this.getCard();
   },
   watch: {
     //搜索赋值
@@ -239,7 +256,7 @@ export default {
           .catch(err => {
             console.log(err);
           });
-      } else if(val === "") {
+      } else if (val === "") {
         this.searchlist = [];
       }
     }

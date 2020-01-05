@@ -6,7 +6,7 @@
     </my-top>
     <div class="shoppingcart-goods">
       <div class="shoppingcart-login" v-if="loginobj && this.$store.state.shoppingcart">
-        <div v-if="this.$store.state.shoppingcart.length > 0" >
+        <div v-if="this.$store.state.shoppingcart.length > 0">
           <van-sticky :offset-top="50">
             <div class="submit">
               <van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
@@ -61,8 +61,10 @@ export default {
   data() {
     return {
       loginobj: "",
+      // 购物车数据
       cartlist: [],
-      checked: false
+      checked: false,
+      settlementList:[],
     };
   },
   components: {},
@@ -112,24 +114,50 @@ export default {
         mallPrice: item.mallPrice
       });
     },
-    //付款
-    settlement() {},
+    //结算
+    settlement() {
+      if (this.sum === "0.00") {
+        this.$toast("亲！请选中要结算的东西哟~");
+      } else {
+        this.cartlist.map(item => {
+          if (item.check) {
+            //传过去有问题改为vuex或其他好一点
+            this.settlementList.push(item)
+            this.$router.push({name:"settlementpage",params: {settlementList: this.settlementList}});
+          }
+        });
+      }
+    },
     //删除商品
     del() {
-      // if(this.)
-      this.cartlist.map(item => {
-        if (item.check) {
-          // console.log(item.cid);
-          this.$api
-            .deleteShop(item.cid)
-            .then(res => {})
-            .catch(err => {
-              console.log(err);
+      if (this.sum === "0.00") {
+        this.$toast("亲！请选中要删除的东西哟~");
+      } else {
+        this.$dialog
+          .confirm({
+            title: "删除商品",
+            message: "您确定要删除吗？"
+          })
+          .then(() => {
+            this.cartlist.map(item => {
+              if (item.check) {
+                this.$api
+                  .deleteShop(item.cid)
+                  .then(res => {
+                    this.$toast("删除成功");
+                  })
+                  .catch(err => {
+                    console.log(err);
+                  });
+              }
             });
-        }
-        this.getCard();
-      });
-      this.getCard();
+            this.getCard();
+          })
+          .catch(() => {
+            this.$toast("您取消了删除操作");
+            // on cancel
+          });
+      }
     }
   },
   mounted() {

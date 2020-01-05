@@ -68,7 +68,7 @@
       <div>
         <van-goods-action>
           <van-goods-action-icon icon="chat-o" text="客服" />
-          <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" />
+          <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon"  :info="info"/>
           <van-goods-action-button
             type="warning"
             text="加入购物车"
@@ -222,7 +222,19 @@ export default {
     // this.img;
   },
   watch: {},
-  computed: {},
+  computed: {
+    info() {
+      if (this.$store.state.shoppingcart !== null) {
+        if (this.$store.state.shoppingcart.length > 0) {
+          let num = 0;
+          this.$store.state.shoppingcart.map(item => {
+            num += Number(item.count);
+          });
+          return num;
+        } else return null;
+      }
+    }
+  },
   filters: {},
   beforeRouteLeave(to, from, next) {
     if (
