@@ -35,8 +35,7 @@ export default {
     return {
       addressList: [],
       chosenAddressId: "1",
-      default: {},
-      chosenAddress: {}
+      default: {}
     };
   },
   components: {},
@@ -100,8 +99,7 @@ export default {
     },
     //选中某一项地址
     onSelect(item) {
-      this.chosenAddress = item;
-      console.log(this.chosenAddress);
+      this.$store.state.chosenAddress = item;
     },
     //没有默认地址选择第一项
     chosenAdd() {
@@ -162,5 +160,8 @@ export default {
   font-size: 16px;
   color: #fff;
   // position:absolute;
+}
+/deep/ .van-radio__icon{
+  font-size: 5.333vw !important;
 }
 </style>

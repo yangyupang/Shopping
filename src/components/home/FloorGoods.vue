@@ -51,7 +51,7 @@ export default {
   components: {},
   methods: {
     details(id) {
-      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
     }
   },
   mounted() {},

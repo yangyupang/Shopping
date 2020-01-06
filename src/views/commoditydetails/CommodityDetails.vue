@@ -68,7 +68,7 @@
       <div>
         <van-goods-action>
           <van-goods-action-icon icon="chat-o" text="客服" />
-          <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon"  :info="info"/>
+          <van-goods-action-icon icon="cart-o" text="购物车" @click="onClickIcon" :info="info" />
           <van-goods-action-button
             type="warning"
             text="加入购物车"
@@ -77,6 +77,27 @@
           <van-goods-action-button type="danger" text="立即购买" @click="onClickBy" />
         </van-goods-action>
       </div>
+      <van-popup v-model="showed" position="bottom" closeable style=" height: 37.3vh">
+        <div class="commodity">
+          <div class="commodity-img">
+            <img :src="detailsList.image" alt />
+          </div>
+          <div class="commodity-name">
+            <div class="name">{{detailsList.name}}</div>
+            <div class="price">￥{{detailsList.present_price}}</div>
+          </div>
+        </div>
+        <div class="number">
+          <div class="count">
+            <div>购买数量：</div>
+            <div>剩余件数：{{this.detailsList.amount}} <span></span> </div>
+          </div>
+          <div class="stepper">
+            <van-stepper v-model="value" />
+          </div>
+        </div>
+        <div class="ClickBy" @click="ClickBy">立即购买</div>
+      </van-popup>
     </div>
   </div>
 </template>
@@ -94,7 +115,9 @@ export default {
       auto: 3000,
       show: false,
       // ind: 0,
-      images: []
+      images: [],
+      showed: false,
+      value: 1
     };
   },
   components: {},
@@ -102,10 +125,9 @@ export default {
     // 获取商品数据
     getgoodsOne() {
       this.$api
-        .goodOne(this.$route.params.goodsId, 1)
+        .goodOne(this.$route.query.goodsId, 1)
         .then(res => {
           this.detailsList = res.goods.goodsOne;
-          // console.log(this.detailsList);
           this.images.push(res.goods.goodsOne.image);
         })
         .catch(err => {
@@ -164,7 +186,7 @@ export default {
     //是否收藏
     getcancelCollection() {
       this.$api
-        .isCollection({ id: this.$route.params.goodsId })
+        .isCollection({ id: this.$route.query.goodsId })
         .then(res => {
           // console.log(res.isCollection);
           if (res.isCollection === 1) {
@@ -210,7 +232,16 @@ export default {
       } else this.$toast("亲！您还没有登录哟~");
     },
     // 直接购买
-    onClickBy() {}
+    onClickBy() {
+      this.showed = true;
+    },
+    ClickBy() {
+      this.detailsList.count =this.value
+      this.$router.push({
+        name: "settlementpage",
+        params: { item: this.detailsList }
+      });
+    }
   },
   mounted() {
     this.getgoodsOne();
@@ -372,5 +403,62 @@ export default {
     margin-left: -2px;
     font-size: 18px;
   }
+}
+/deep/ .van-popup {
+  overflow: initial;
+}
+.commodity {
+  display: flex;
+  border-bottom: 1px solid #d3d3d4;
+  .commodity-img {
+    width: 100px;
+    border: 1px solid #d3d3d4;
+    margin: 0 10px;
+    position: relative;
+    top: -20px;
+    img {
+      width: 100%;
+    }
+  }
+  .commodity-name {
+    width: 150px;
+    .name {
+      font-size: 16px;
+      padding: 10px;
+    }
+    .price {
+      font-size: 14px;
+      color: red;
+      padding: 0 10px;
+    }
+  }
+}
+.number {
+  display: flex;
+  font-size: 15px;
+  border-bottom: 1px solid #d3d3d4;
+  padding: 20px;
+  justify-content: space-between;
+  .count {
+    div {
+      &:nth-child(1) {
+        padding: 5px 0;
+      }
+      &:nth-child(2) {
+        padding: 5px 0;
+        font-size: 14px;
+        color: #adadad;
+
+      }
+    }
+  }
+  .stepper {
+  }
+}
+.ClickBy {
+  background-color: rgb(255, 68, 68);
+  padding: 20px;
+  text-align: center;
+  color: #fff;
 }
 </style>

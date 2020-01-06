@@ -6,7 +6,7 @@
     </my-top>
     <div class="my-profilephoto">
       <div class="my-set">
-        <van-icon v-if="username" name="setting" color="#fff" />
+        <van-icon v-if="username" name="setting" @click="setting" color="#fff" />
       </div>
       <div class="my-head">
         <img src="../../assets/img/head.jpg" alt />
@@ -14,7 +14,7 @@
       <!-- 登录 -->
       <div class="my-islogin" v-if="username">
         <div class="my-welcome">
-          <div class="welcome">欢迎您：{{username.nickname}}</div>
+          <div class="welcome">欢迎您：{{this.$store.state.user}}</div>
           <div @click="outlogin" class="outlogin">退出登录</div>
         </div>
       </div>
@@ -81,22 +81,33 @@
         <van-divider />
       </div>
     </div>
+    <van-popup v-model="show" position="right" :style="{ width: '100%',height:'100%' }">
+      <Eject @changes="change"></Eject>
+    </van-popup>
   </div>
 </template>
 
 <script>
+import Eject from "../../components/Eject";
 export default {
   data() {
     return {
       username: "",
       active: "",
-      num: 5
+      num: "",
+      show: false
     };
   },
-  components: {},
+  components: { Eject },
   methods: {
     tologin() {
       this.$router.push("/login");
+    },
+    change(data) {
+      this.show = data;
+    },
+    setting() {
+      this.show = true;
     },
     outlogin() {
       this.$api
@@ -106,7 +117,7 @@ export default {
           this.$toast("退出成功");
           this.username = "";
           localStorage.setItem("args", this.username);
-          this.$store.state.shoppingcart =  null;
+          this.$store.state.shoppingcart = null;
         })
         .catch(err => {
           console.log(err);
@@ -125,6 +136,10 @@ export default {
         // 点击待收货
         else if (index === 2) {
           this.$router.push("/myorder");
+        }
+        // 点击去评价
+        else if (index === 3) {
+          this.$router.push("/evaluationcenter");
         }
         //点击已完成
         else if (index === 4) {
@@ -162,16 +177,23 @@ export default {
     //点击历史浏览
     history() {
       this.$router.push("/browsinghistory");
+    },
+    //获取有多少条评价消息
+    tobeEvaluated() {
+      this.$api.tobeEvaluated().then(res => {
+        if (res.data.count !== 0) {
+          this.num = res.data.count;
+        }
+      });
     }
   },
 
   mounted() {
     if (localStorage.getItem("args") !== "") {
       this.username = JSON.parse(localStorage.getItem("args"));
+      this.$store.state.user =this.username.nickname
     }
-    // if (this.active !== "") {
-    //   this.active = "";
-    // }
+    this.tobeEvaluated();
   },
   watch: {},
   computed: {},
@@ -241,12 +263,14 @@ export default {
       display: flex;
       justify-content: space-between;
       padding: 10px 10px 0 10px;
+      font-size: 16px;
       .order {
         display: flex;
       }
     }
   }
   .handle {
+    font-size: 16px;
     .collection {
       display: flex;
       justify-content: space-between;
@@ -255,6 +279,17 @@ export default {
         display: flex;
       }
     }
+  }
+}
+
+.set-top {
+  background-color: #fff;
+  .back {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .set {
+    font-size: 16px;
   }
 }
 </style>

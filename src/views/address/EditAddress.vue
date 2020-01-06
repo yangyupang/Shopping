@@ -60,22 +60,6 @@ export default {
         .then(res => {
           this.$toast(res.msg);
           this.$router.go(-1);
-          // 修改默认地址
-          if (this.detail) {
-            // this.default
-            this.$api.postAddress({
-              name: this.default.name,
-              tel: this.default.tel,
-              province: this.default.province,
-              city: this.default.city,
-              county: this.default.county,
-              addressDetail: this.default.addressDetail,
-              isDefault: false,
-              areaCode: this.default.areaCode,
-              address: this.default.province + this.default.city + this.default.county,
-              id: this.default._id
-            });
-          }
         })
         .catch(err => {
           console.log(err);
@@ -139,5 +123,8 @@ export default {
   height: 92vh;
   font-size: 16px;
   background-color: #fff;
+}
+/deep/ .van-switch{
+ font-size: 8vw !important;
 }
 </style>

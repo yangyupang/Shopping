@@ -65,7 +65,7 @@ export default {
     placeOrder({
         ...args
     }) {
-        return service.req('/order', args)
+        return service.post('/order', args)
     },
 
     // ===============================================================================================================
@@ -120,13 +120,13 @@ export default {
     },
 
     user() {
-        return service.req('/queryUser')
+        return service.post('/queryUser')
     },
 
     saveUser({
         ...args
     }) {
-        return service.req('/saveUser', args)
+        return service.post('/saveUser', args)
     },
 
     getOrderNum() {
@@ -136,7 +136,7 @@ export default {
     comment({
         ...args
     }) {
-        return service.req('/goodsOne/comment', args)
+        return service.post('/goodsOne/comment', args)
     },
     // ===============================================================================================================
     /**
@@ -180,7 +180,7 @@ export default {
     postAddress({
         ...args
     }) {
-        return service.req('/address', args)
+        return service.post('/address', args)
     },
 
     deleteAddress(id) {
@@ -227,19 +227,11 @@ export default {
     },
 
     alreadyEvaluated(page = 1) {
-        return service.req('/alreadyEvaluated', {
-            params: {
-                page
-            }
-        })
+        return service.req('/alreadyEvaluated?page=1')
     },
 
     tobeEvaluated(page = 1) {
-        return service.req('/tobeEvaluated', {
-            params: {
-                page
-            }
-        })
+        return service.req('/tobeEvaluated?page=1')
     },
 
     evaluateOne(_id) {

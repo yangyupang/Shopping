@@ -51,7 +51,7 @@ export default {
     },
     //跳转详情
     details(id) {
-      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
     },
     //加入购物车
     addShop(id) {

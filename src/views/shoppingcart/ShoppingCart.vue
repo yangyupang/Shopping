@@ -64,7 +64,6 @@ export default {
       // 购物车数据
       cartlist: [],
       checked: false,
-      settlementList:[],
     };
   },
   components: {},
@@ -78,10 +77,9 @@ export default {
         .getCard()
         .then(res => {
           this.cartlist = res.shopList;
-          // console.log(res.shopList);
-          // if (res.shopList !== null) {}
           if (res.shopList.length >= 0) {
             this.$store.state.shoppingcart = res.shopList;
+            // console.log(this.$store.state.shoppingcart);
           }
         })
         .catch(err => {
@@ -102,11 +100,7 @@ export default {
         return item.check;
       });
     },
-    //商品一加  商品减一
-    // onChange(value) {
-    //   this.$toast(value);
-    // },
-    //商品一加
+    //商品一加 商品减一
     add(item) {
       this.$api.editCart({
         count: item.count,
@@ -116,16 +110,14 @@ export default {
     },
     //结算
     settlement() {
+      // console.log(111);
       if (this.sum === "0.00") {
         this.$toast("亲！请选中要结算的东西哟~");
       } else {
-        this.cartlist.map(item => {
-          if (item.check) {
-            //传过去有问题改为vuex或其他好一点
-            this.settlementList.push(item)
-            this.$router.push({name:"settlementpage",params: {settlementList: this.settlementList}});
-          }
+        this.$store.state.settlementList = this.cartlist.filter(item => {
+          return item.check;
         });
+        this.$router.push({ name: "settlementpage" });
       }
     },
     //删除商品
@@ -165,8 +157,6 @@ export default {
       this.loginobj = localStorage.getItem("args");
     }
     this.getCard();
-    // console.log(this.$store.state.shoppingcart);
-    // console.log(this.loginobj);
   },
   watch: {},
   computed: {

@@ -15,6 +15,9 @@ export default {
 </script>
 <style lang="scss">
 @import "./styles/common";
+// i{
+//   font-size: 16px !important;
+// }
 .fade-enter-active,
 .fade-leave-avtive {
   transition: opacity 0.5s;

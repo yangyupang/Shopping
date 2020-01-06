@@ -1,7 +1,7 @@
 <template>
 <!-- 评价中心 -->
  <div>
-
+   <div>评价中心</div>
  </div>
 </template>
 

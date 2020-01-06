@@ -1,10 +1,9 @@
 <template>
-
-    <div ref="wrapper">
-      <div class="scroll-content">
-        <slot class="height"></slot>
-      </div>
+  <div ref="wrapper">
+    <div class="scroll-content">
+      <slot class="height"></slot>
     </div>
+  </div>
 </template>
 
 <script>
@@ -20,13 +19,14 @@ export default {
       this.bs = new BScroll(".wrapper", {
         scrollY: true,
         click: true,
-        probeType: 3// listening scroll hook
-
+        probeType: 3 // listening scroll hook
       });
     }
   },
   mounted() {
-    this.init();
+    setTimeout(()=>{
+       this.init();
+    },500)
   },
   beforeDestroy() {},
   watch: {},
@@ -35,5 +35,4 @@ export default {
 </script>
 
 <style lang='scss'>
-
 </style>
