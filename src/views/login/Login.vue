@@ -26,9 +26,7 @@
           :left-icon="icon"
           @click-left-icon="iconchange"
         />
-      </van-cell-group>
-      <!-- 手机号验证 -->
-      <van-cell-group>
+        <!-- 手机号验证 -->
         <van-field
           v-model="phone"
           center
@@ -39,9 +37,7 @@
           type="number"
           maxlength="11"
         ></van-field>
-      </van-cell-group>
-      <!-- 短信验证 -->
-      <van-cell-group>
+        <!-- 短信验证 -->
         <van-field
           v-model="sms"
           center
@@ -60,16 +56,14 @@
           >发送验证码</van-button>
           <van-button slot="button" disabled type="primary" v-else size="small">{{retry}}秒后再试</van-button>
         </van-field>
-      </van-cell-group>
-      <!-- 图形验证 -->
-      <van-cell-group class="van_icon__image">
+        <!-- 图形验证 -->
         <van-field
           v-model="verify"
           center
           clearable
           label="验证码"
           placeholder="请输入验证码"
-          class="sms"
+          class="sms van_icon__image"
           maxlength="4"
           :right-icon="verifyicon"
           @click-right-icon="changeCaptcha"
@@ -253,7 +247,7 @@ export default {
 .from {
   background: #fff;
   position: relative;
-  top: 32vw;
+  top: 100px;
   width: 93vw;
   height: 68vh;
   margin: 0 auto;

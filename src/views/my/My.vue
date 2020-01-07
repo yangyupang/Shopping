@@ -127,15 +127,15 @@ export default {
       if (this.username) {
         // 点击待付款
         if (index === 0) {
-          this.$router.push("/myorder");
+          this.$router.push({name:"myorder",query:{active:1}});
         }
         // 点击待发货
         else if (index === 1) {
-          this.$router.push("/myorder");
+          this.$router.push({name:"myorder",query:{active:2}});
         }
         // 点击待收货
         else if (index === 2) {
-          this.$router.push("/myorder");
+          this.$router.push({name:"myorder",query:{active:3}});
         }
         // 点击去评价
         else if (index === 3) {
@@ -143,7 +143,7 @@ export default {
         }
         //点击已完成
         else if (index === 4) {
-          this.$router.push("/myorder");
+          this.$router.push({name:"myorder",query:{active:4}});
         }
       } else {
         this.$toast("亲！您还没有登录哟~");
@@ -153,7 +153,7 @@ export default {
     //点击所有订单
     allorder() {
       if (this.username) {
-        this.$router.push("/myorder");
+        this.$router.push({name:"myorder",query:{active:0}});
       } else {
         this.$toast("亲！您还没有登录哟~");
       }
@@ -191,7 +191,7 @@ export default {
   mounted() {
     if (localStorage.getItem("args") !== "") {
       this.username = JSON.parse(localStorage.getItem("args"));
-      this.$store.state.user =this.username.nickname
+      this.$store.state.user = this.username.nickname;
     }
     this.tobeEvaluated();
   },
@@ -222,12 +222,15 @@ export default {
     height: 32px;
     justify-content: flex-end;
     margin: 10px 10px 0 0;
+    height: 4.8vh;
   }
   .my-head {
     width: 120px;
-    margin: 0 auto;
+    height: 18vh;
+    margin: 0px auto;
     img {
       width: 100%;
+      height: 18vh;
       border-radius: 50%;
     }
   }
@@ -235,8 +238,8 @@ export default {
     font-size: 16px;
     display: flex;
     justify-content: center;
-    padding: 10px;
     color: #fff;
+    height: 5.787vh;
     .my-welcome {
       .welcome {
         font-size: 18px;
@@ -252,10 +255,11 @@ export default {
 //操作
 .my-operation {
   width: 100%;
-  height: 52vh;
+  height: 48vh;
   background-color: #fff;
   .operate {
     margin-bottom: 10px;
+    height: 16.685vh;
     /deep/ .van-tabbar-item__icon {
       font-size: 22px;
     }
@@ -271,6 +275,7 @@ export default {
   }
   .handle {
     font-size: 16px;
+    height: 22.902vh;
     .collection {
       display: flex;
       justify-content: space-between;

@@ -1,7 +1,8 @@
 .van_icon__image {
     .van-icon__image {
-        width: auto !important;
-        height: auto !important;
+        width: 100px !important;
+        height: 40px !important;
+        font-size: 16px !important;
     }
 }
 
@@ -23,4 +24,19 @@
 
 .van-search {
     background-color: #ececec !important;
+}
+
+.van__tabs {
+    .van-tabs {
+        overflow: inherit !important;
+    }
+    .van-tabs__wrap {
+        height: 11.733vw !important;
+        position: absolute !important;
+        width: 330px !important;
+        left: 22px !important;
+        top: -20px !important;
+        box-shadow: 1px 1px 8px 1px #cdcdcd !important;
+        border-radius: 5px !important;
+    }
 }

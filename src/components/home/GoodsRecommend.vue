@@ -60,6 +60,7 @@ export default {
           .addShop({ id: id })
           .then(res => {
             if (res.code === 200) {
+              // console.log(id);
               this.$toast(res.msg);
               //获取购物车数据
               this.$api
@@ -67,14 +68,12 @@ export default {
                 .then(res => {
                   if (res.shopList.length > 0) {
                     this.$store.state.shoppingcart = res.shopList;
-                    // console.log(res.shopList);
                   }
                 })
                 .catch(err => {
                   console.log(err);
                 });
             }
-            // console.log(res);
           })
           .catch(err => {
             console.log(err);

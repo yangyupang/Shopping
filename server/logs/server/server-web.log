@@ -864,3 +864,60 @@ hostname: �������С����
 pid: 2260
 hostname: �������С����
 
+2020-01-07 17:46:41,660 ERROR 8432 [-/127.0.0.1/-/8ms POST /v1/addShop] nodejs.TypeError: Cannot read property 'present_price' of null
+    at OperatingGoodsController.addShop (C:\Users\asus\Desktop\培训项目们\Shopping\server\app\controller\api\operatingGoods.js:61:38)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\app\middleware\isLogin.js:15:13
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-development@2.4.3@egg-development\app\middleware\egg_loader_trace.js:9:50
+    at async xframe (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\xframe.js:7:5)
+    at async xssProtection (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\xssProtection.js:7:5)
+    at async nosniff (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\nosniff.js:8:5)
+    at async noopen (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\noopen.js:8:5)
+    at async session (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-session@5.12.3@koa-session\index.js:41:7)
+    at async bodyParser (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-bodyparser@4.2.1@koa-bodyparser\index.js:86:5)
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-static-cache@5.1.2@koa-static-cache\index.js:51:63
+    at async notfound (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg@2.26.0@egg\app\middleware\notfound.js:5:5)
+    at async meta (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg@2.26.0@egg\app\middleware\meta.js:12:5)
+
+pid: 8432
+hostname: �������С����
+
+2020-01-07 17:48:18,772 ERROR 8432 [-/127.0.0.1/-/4ms POST /v1/addShop] nodejs.TypeError: Cannot read property 'present_price' of null
+    at OperatingGoodsController.addShop (C:\Users\asus\Desktop\培训项目们\Shopping\server\app\controller\api\operatingGoods.js:61:38)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\app\middleware\isLogin.js:15:13
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-development@2.4.3@egg-development\app\middleware\egg_loader_trace.js:9:50
+    at async xframe (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\xframe.js:7:5)
+    at async xssProtection (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\xssProtection.js:7:5)
+    at async nosniff (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\nosniff.js:8:5)
+    at async noopen (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\noopen.js:8:5)
+    at async session (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-session@5.12.3@koa-session\index.js:41:7)
+    at async bodyParser (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-bodyparser@4.2.1@koa-bodyparser\index.js:86:5)
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-static-cache@5.1.2@koa-static-cache\index.js:51:63
+    at async notfound (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg@2.26.0@egg\app\middleware\notfound.js:5:5)
+    at async meta (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg@2.26.0@egg\app\middleware\meta.js:12:5)
+
+pid: 8432
+hostname: �������С����
+
+2020-01-07 17:49:45,769 ERROR 8432 [-/127.0.0.1/-/6ms POST /v1/addShop] nodejs.TypeError: Cannot read property 'present_price' of null
+    at OperatingGoodsController.addShop (C:\Users\asus\Desktop\培训项目们\Shopping\server\app\controller\api\operatingGoods.js:61:38)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\app\middleware\isLogin.js:15:13
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-development@2.4.3@egg-development\app\middleware\egg_loader_trace.js:9:50
+    at async xframe (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\xframe.js:7:5)
+    at async xssProtection (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\xssProtection.js:7:5)
+    at async nosniff (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\nosniff.js:8:5)
+    at async noopen (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg-security@2.7.1@egg-security\lib\middlewares\noopen.js:8:5)
+    at async session (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-session@5.12.3@koa-session\index.js:41:7)
+    at async bodyParser (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-bodyparser@4.2.1@koa-bodyparser\index.js:86:5)
+    at async C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_koa-static-cache@5.1.2@koa-static-cache\index.js:51:63
+    at async notfound (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg@2.26.0@egg\app\middleware\notfound.js:5:5)
+    at async meta (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_egg@2.26.0@egg\app\middleware\meta.js:12:5)
+
+pid: 8432
+hostname: �������С����
+

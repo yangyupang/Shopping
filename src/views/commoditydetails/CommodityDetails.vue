@@ -54,13 +54,53 @@
       <div class="detail-comments">
         <van-tabs v-model="active" swipeable title-active-color="red">
           <van-tab title="商品详情">
-            <div v-html="detailsList.detail" v-if="detailsList"></div>
-            <div v-else>
-              <van-loading size="24px" vertical>加载中...</van-loading>
-            </div>
+            <better-scroll class="wrapper">
+              <div v-html="detailsList.detail" v-if="detailsList"></div>
+              <div v-else>
+                <van-loading size="24px" vertical>加载中...</van-loading>
+              </div>
+            </better-scroll>
           </van-tab>
           <van-tab title="商品评价">
-            <div>还没评论</div>
+            <better-scroll class="wrapper">
+              <div v-if="this.comment.length > 0" class="have-evaluate">
+                <div v-for="(item,index) in comment" :key="index" class="comment">
+                  <div>
+                    <div class="commenter-img">
+                      <img :src="item.comment_avatar" alt v-if="!item.user" />
+                      <img :src="item.user[0].avatar" alt v-else />
+                    </div>
+                  </div>
+                  <div>
+                    <div class="comment-content">
+                      <div class="left">
+                        <div class="commenter-name" v-if="!item.user">{{item.comment_nickname}}:</div>
+                        <div class="commenter-name" v-else>{{item.user[0].nickname}}:</div>
+                        <div class="comment-rate">
+                          <van-rate v-model="item.rate" />
+                        </div>
+                      </div>
+                      <div class="rigth">
+                        <div class="comment-time">{{item.comment_time}}</div>
+                      </div>
+                    </div>
+                    <div class="commenter-content">
+                      <van-cell-group>
+                        <van-field
+                          v-model="item.content"
+                          rows="1"
+                          autosize
+                          label="评价内容:"
+                          type="textarea"
+                          disabled
+                        />
+                      </van-cell-group>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div v-else class="no-evaluate">商品还没有评论~</div>
+            </better-scroll>
           </van-tab>
         </van-tabs>
       </div>
@@ -90,7 +130,10 @@
         <div class="number">
           <div class="count">
             <div>购买数量：</div>
-            <div>剩余件数：{{this.detailsList.amount}} <span></span> </div>
+            <div>
+              剩余件数：{{this.detailsList.amount}}
+              <span></span>
+            </div>
           </div>
           <div class="stepper">
             <van-stepper v-model="value" />
@@ -117,7 +160,8 @@ export default {
       // ind: 0,
       images: [],
       showed: false,
-      value: 1
+      value: 1,
+      comment: []
     };
   },
   components: {},
@@ -128,6 +172,8 @@ export default {
         .goodOne(this.$route.query.goodsId, 1)
         .then(res => {
           this.detailsList = res.goods.goodsOne;
+          this.comment = res.goods.comment;
+          // console.log(this.comment);
           this.images.push(res.goods.goodsOne.image);
         })
         .catch(err => {
@@ -159,7 +205,6 @@ export default {
           .then(res => {
             this.falg = true;
             this.$toast(res.msg);
-            // console.log(res);
             this.getcancelCollection();
           })
           .catch(err => {
@@ -236,7 +281,7 @@ export default {
       this.showed = true;
     },
     ClickBy() {
-      this.detailsList.count =this.value
+      this.detailsList.count = this.value;
       this.$router.push({
         name: "settlementpage",
         params: { item: this.detailsList }
@@ -410,6 +455,7 @@ export default {
 .commodity {
   display: flex;
   border-bottom: 1px solid #d3d3d4;
+  height: 15.3vh;
   .commodity-img {
     width: 100px;
     border: 1px solid #d3d3d4;
@@ -439,6 +485,7 @@ export default {
   border-bottom: 1px solid #d3d3d4;
   padding: 20px;
   justify-content: space-between;
+  height: 7.3vh;
   .count {
     div {
       &:nth-child(1) {
@@ -448,17 +495,65 @@ export default {
         padding: 5px 0;
         font-size: 14px;
         color: #adadad;
-
       }
     }
-  }
-  .stepper {
   }
 }
 .ClickBy {
   background-color: rgb(255, 68, 68);
-  padding: 20px;
+  padding: 3vh;
   text-align: center;
   color: #fff;
+  height: 14.7vh;
+  font-size: 16px;
+}
+.have-evaluate {
+  background-color: #fff;
+  padding: 0 10px;
+  .comment {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    .commenter-img {
+      width: 57px;
+      height: 57px;
+      img {
+        width: 57px;
+        height: 57px;
+        border-radius: 50%;
+      }
+    }
+    .comment-content {
+      display: flex;
+      font-size: 14px;
+      .left {
+        width: 130px;
+        .comment-rate {
+        }
+        .commenter-name {
+        }
+      }
+      .right {
+        .comment-time {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .commenter-content {
+      /deep/ .van-cell {
+        padding: 0 !important;
+      }
+    }
+  }
+}
+.no-evaluate {
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+}
+.wrapper {
+  overflow: hidden;
+  margin-bottom: 5vh;
 }
 </style>

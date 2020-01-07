@@ -11,4 +11,6 @@ export default {
     chosenAddress: {},
     //用于修改信息后存储下来
     user: "",
+    //用于存商品评价
+    list: {},
 }

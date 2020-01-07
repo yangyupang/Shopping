@@ -94,16 +94,23 @@ export default {
 .goods {
   font-size: 16px;
   .goods-name {
-    padding: 10px 0;
+    padding: 2.667vw 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
   }
   .goods-price {
     color: red;
-    margin-top: 40px;
+    margin-top: 43px;
   }
 }
 .cancel {
-  height: 16px;
-  margin-top: 50px;
+  height: 4.267vw;
+  margin-top: 12vh;
+  font-size: 4.267vw;
+  width: 50px;
+  text-align: center;
 }
 .wrapper {
   height: 92vh;

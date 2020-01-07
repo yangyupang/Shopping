@@ -189,7 +189,7 @@ export default {
 }
 .shoppingcart-goods {
   width: 100%;
-  height: 540px;
+  height: 81vh;
   background-color: #fff;
   //未登录
   .shoppingcart-logout {

@@ -7,7 +7,7 @@
       </div>
       <div slot="centre" class="pay">订单结算</div>
     </my-top>
-    <div class="no-address" @click="address" v-if=" this.addressList ===null">
+    <div class="no-address" @click="address" v-if="!addressList.name ">
       <van-icon name="add-o" />
       <div>点击添加收货地址</div>
     </div>
@@ -60,7 +60,7 @@
 export default {
   data() {
     return {
-      addressList: [],
+      addressList: {},
       idDirect: false
     };
   },
@@ -72,6 +72,7 @@ export default {
     },
     address() {
       this.$router.push("/addresslist");
+      this.$store.state.chosenAddress = {};
     },
     //查询用户收获地址
     getAddress() {
@@ -79,7 +80,9 @@ export default {
         .getAddress()
         .then(res => {
           if (res.code === 200) {
-            this.addressList = res.address[0];
+            if (res.address.length > 0) {
+              this.addressList = res.address[0];
+            }
           }
         })
         .catch(err => {
@@ -92,14 +95,14 @@ export default {
         .getDefaultAddress()
         .then(res => {
           if (res.code === 200) {
-            if (res.defaultAdd !== null) {
-              this.addressList = res.defaultAdd;
-            } else {
-              this.getAddress();
-            }
+            // console.log(res);
             //点击选择地址后展示出来
             if (this.$store.state.chosenAddress.name) {
               this.addressList = this.$store.state.chosenAddress;
+            } else if (res.defaultAdd !== null) {
+              this.addressList = res.defaultAdd;
+            } else {
+              this.getAddress();
             }
           }
         })
@@ -112,19 +115,24 @@ export default {
     },
     //提交订单
     invoicingBtn() {
-      this.$api
-        .placeOrder({
-          address: this.addressList.address + this.addressList.addressDetail,
-          tel: this.addressList.tel,
-          orderId: this.orderId,
-          idDirect: this.idDirect,
-          count: this.$store.state.settlementList[0].count
-        })
-        .then(res => {
-          this.$toast(res.msg);
-          this.$router.go(-1);
-          this.$store.state.settlementList = [];
-        });
+      // console.log(this.addressList);
+      if (this.addressList.name) {
+        this.$api
+          .placeOrder({
+            address: this.addressList.address + this.addressList.addressDetail,
+            tel: this.addressList.tel,
+            orderId: this.orderId,
+            idDirect: this.idDirect,
+            count: this.$store.state.settlementList[0].count
+          })
+          .then(res => {
+            this.$toast(res.msg);
+            this.$router.go(-1);
+            this.$store.state.settlementList = [];
+          });
+      } else {
+        this.$toast("亲，请添加收获地址哟~");
+      }
     }
   },
   mounted() {
@@ -133,7 +141,7 @@ export default {
       this.$store.state.settlementList.push(this.$route.params.item);
       this.idDirect = true;
     }
-
+    // console.log(this.addressList);
   },
   watch: {},
   computed: {
@@ -176,6 +184,7 @@ export default {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
+  height: 12.2vh;
   .address-icon {
     font-size: 20px;
     padding: 30px 10px;
@@ -252,7 +261,7 @@ export default {
 }
 .invoicing {
   margin-top: 2px;
-  height: 52px;
+  height: 8vh;
   background-color: #fff;
   display: flex;
   font-size: 16px;
