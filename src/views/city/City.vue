@@ -9,7 +9,7 @@
       </my-top>
       <van-search placeholder="请输入搜索关键词" v-model="value" />
     </van-sticky>
-    <better-scroll class="wrapper" v-if="value === '' ">
+    <div v-if="value === ''">
       <div class="nowcity">当前城市</div>
       <div class="cityname">
         <div class="city">{{this.$route.params.city}}</div>
@@ -26,15 +26,24 @@
       <van-index-bar :sticky-offset-top="105">
         <div v-for="(item,index) in citys.data.cities" :key="index">
           <van-index-anchor :index="index" />
-          <van-cell :title="item0.name" v-for="item0 in item" :key="item0.id" @click="change(item0.name)" />
+          <van-cell
+            :title="item0.name"
+            v-for="item0 in item"
+            :key="item0.id"
+            @click="change(item0.name)"
+          />
         </div>
       </van-index-bar>
-    </better-scroll>
+    </div>
+
     <div class="search" v-else>
       <!-- {{DataList}} -->
-      <div v-for="item in DataList" :key="item.id" class="search-item" @click="change(item.name)">
-         {{item.name}}
-      </div>
+      <div
+        v-for="item in DataList"
+        :key="item.id"
+        class="search-item"
+        @click="change(item.name)"
+      >{{item.name}}</div>
     </div>
   </div>
 </template>
@@ -62,23 +71,12 @@ export default {
       Object.keys(this.citys.data.cities).map(item => {
         this.citiesname.push(...this.citys.data.cities[item]);
       });
-      // console.log(this.citiesname);
     }
   },
   mounted() {
     this.getList();
-    // console.log(this.citys.data.cities);
-    // this.$route.params.city
   },
-  watch: {
-    // value(val) {
-    //   Object.keys(this.citys.data.cities).map(item => {
-    //     this.DataList = item.filter(item0 => {
-    //       return JSON.stringify(item0).includes(val);
-    //     });
-    //   });
-    // }
-  },
+  watch: {},
   computed: {
     DataList() {
       return this.citiesname.filter(item =>
@@ -113,7 +111,7 @@ export default {
   font-size: 16px;
   overflow: hidden;
   .city {
-    width: 50px;
+    width: 100px;
     height: 25px;
     border-radius: 5px;
     border: 1px black solid;

@@ -72,14 +72,14 @@ export default {
         .then(res => {
           this.Collectionlist = res.data.list;
           // console.log(res);
-          console.log(this.Collectionlist);
+          // console.log(this.Collectionlist);
         })
         .catch(err => {
           console.log(err);
         });
     },
     details(id) {
-      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
     }
   },
   mounted() {

@@ -11,34 +11,34 @@
       </div>
       <div slot="right" class="closeSearch" v-if="show" @click="closeSearch">取消</div>
     </my-top>
-    <van-pull-refresh
+    <!-- <van-pull-refresh
       v-model="isLoading"
       success-text="刷新成功"
       @refresh="onRefresh"
       v-if="list.floor1"
-    >
-      <better-scroll v-if="list.floor1" class="wrapper">
-        <!-- 商品轮播 -->
-        <GoodsShuffling :swipelist="list.slides" class="swipe"></GoodsShuffling>
-        <!-- 新鲜水果，中外名酒 -->
-        <Recommend :recommend="list.category" class="swipe"></Recommend>
-        <!-- 广告  内测期间 仅对公司内部配送 -->
-        <div class="delivery">
-          <img :src="picture" alt />
-        </div>
-        <!-- 商品推荐 -->
-        <GoodsRecommend :goodsrecommend="list.recommend" class="swipe"></GoodsRecommend>
-        <!-- 1F休闲食品 -->
-        <FloorGoods :goods="list.floor1" :floorName="floorname.floor1" indx="1F" class="swipe"></FloorGoods>
-        <!-- 2F新鲜水果 -->
-        <FloorGoods :goods="list.floor2" :floorName="floorname.floor2" indx="2F" class="swipe"></FloorGoods>
-        <!-- 3F营养奶品 -->
-        <FloorGoods :goods="list.floor3" :floorName="floorname.floor3" indx="3F" class="swipe"></FloorGoods>
-        <!-- 热销商品 -->
-        <HotProduct :hotproduct="list.hotGoods" class="swipe"></HotProduct>
-        <!-- <div class="perch"></div> -->
-      </better-scroll>
-    </van-pull-refresh>
+    >    </van-pull-refresh>-->
+    <bs-home v-if="list.floor1" class="wrapper" @func="recommend" :flag='flag'>
+      <!-- 商品轮播 -->
+      <GoodsShuffling :swipelist="list.slides" class="swipe"></GoodsShuffling>
+      <!-- 新鲜水果，中外名酒 -->
+      <Recommend :recommend="list.category" class="swipe"></Recommend>
+      <!-- 广告  内测期间 仅对公司内部配送 -->
+      <div class="delivery">
+        <img :src="picture" alt />
+      </div>
+      <!-- 商品推荐 -->
+      <GoodsRecommend :goodsrecommend="list.recommend" class="swipe"></GoodsRecommend>
+      <!-- 1F休闲食品 -->
+      <FloorGoods :goods="list.floor1" :floorName="floorname.floor1" indx="1F" class="swipe"></FloorGoods>
+      <!-- 2F新鲜水果 -->
+      <FloorGoods :goods="list.floor2" :floorName="floorname.floor2" indx="2F" class="swipe"></FloorGoods>
+      <!-- 3F营养奶品 -->
+      <FloorGoods :goods="list.floor3" :floorName="floorname.floor3" indx="3F" class="swipe"></FloorGoods>
+      <!-- 热销商品 -->
+      <HotProduct :hotproduct="list.hotGoods" class="swipe"></HotProduct>
+      <!-- <div class="perch"></div> -->
+    </bs-home>
+
     <!-- 加载 -->
     <van-loading size="24px" vertical v-else>加载中...</van-loading>
     <van-popup v-model="show" position="bottom" :style="{ height: '92.2%' }" :overlay="false">
@@ -112,7 +112,8 @@ export default {
       picture: "",
       floorname: "",
       show: false,
-      searchlist: []
+      searchlist: [],
+      flag: false
     };
   },
   components: {
@@ -125,26 +126,23 @@ export default {
   methods: {
     //首页数据获取
     recommend() {
+      this.flag = false;
       this.$api
         .recommend()
         .then(res => {
-          this.list = res.data;
-          this.picture = res.data.advertesPicture.PICTURE_ADDRESS;
-          this.floorname = res.data.floorName;
-          this.$store.state.category = res.data.category;
+          if (res.code === 200) {
+            this.flag = true;
+            this.list = res.data;
+            this.picture = res.data.advertesPicture.PICTURE_ADDRESS;
+            this.floorname = res.data.floorName;
+            this.$store.state.category = res.data.category;
+          }
+
           // console.log(floorname);
         })
         .catch(err => {
           console.log(err);
         });
-    },
-    //刷新
-    onRefresh() {
-      setTimeout(() => {
-        this.$toast("刷新成功");
-        this.isLoading = false;
-        this.count++;
-      }, 500);
     },
     //选择城市
     changecity(val) {
@@ -236,30 +234,44 @@ export default {
     function onError(data) {}
     this.recommend();
     this.getCard();
+    //搜索监听
+    this.$watch(
+      "searchValue",
+      this.$util.throttle(() => {
+        if (this.searchValue === "") {
+          this.searchlist = [];
+        } else {
+          this.$api
+            .search({ value: this.searchValue.trim(), page: 1 })
+            .then(res => {
+              this.searchlist = res.data.list;
+              this.searchlist.forEach(item => {
+                item.name = this.$util.keyWord(
+                  item.name,
+                  this.searchValue.trim()
+                );
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      }, 200)
+    );
   },
   watch: {
     //搜索赋值
-    searchValue(val) {
-      // console.log(val);
-      // console.log(newval);
-      if (val.trim() !== "") {
-        this.show = true;
-        this.$api
-          .search({ value: val.trim(), page: 1 })
-          .then(res => {
-            // console.log(res.data.list);
-            this.searchlist = res.data.list;
-            this.searchlist.forEach(item => {
-              item.name = this.$util.keyWord(item.name, val.trim());
-            });
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      } else if (val === "") {
-        this.searchlist = [];
-      }
-    }
+    // searchValue(val) {
+    //   val.trim();
+    //   if (val === "") {
+    //     this.searchlist = [];
+    //   } else {
+    //     // console.log(val);
+    //     // this.$util.debounce(
+    //     //   500
+    //     // );
+    //   }
+    // }
   },
   computed: {
     city() {
@@ -323,8 +335,9 @@ export default {
 }
 
 .wrapper {
-  height: 83vh;
+  height: 84.4vh;
   overflow: hidden;
+  margin-top: -16px;
 }
 .itemname {
   font-size: 16px;

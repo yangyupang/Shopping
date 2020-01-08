@@ -159,6 +159,9 @@ export default {
   text-align: center;
   font-size: 16px;
   color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
   // position:absolute;
 }
 /deep/ .van-radio__icon{

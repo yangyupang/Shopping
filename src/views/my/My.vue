@@ -95,7 +95,8 @@ export default {
       username: "",
       active: "",
       num: "",
-      show: false
+      show: false,
+      
     };
   },
   components: { Eject },
@@ -118,6 +119,7 @@ export default {
           this.username = "";
           localStorage.setItem("args", this.username);
           this.$store.state.shoppingcart = null;
+          this.num ="";
         })
         .catch(err => {
           console.log(err);

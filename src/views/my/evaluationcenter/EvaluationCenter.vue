@@ -11,12 +11,12 @@
       <img src="../../../assets/img/evaluate.jpg" alt />
     </div>
     <van-tabs v-model="active" class="van__tabs">
-      <van-tab title="待评价">
+      <van-tab title="待评价" name='1'>
         <div class="to-evaluate">
           <div v-if="evaluateList.length <=0" class="no-goods">暂无需要评价的物品</div>
           <div v-else>
-            <better-scroll class="wrapper">
-              <div class="evaluate-goods" v-for="item in evaluateList" :key="item.name">
+            <better-scroll class="wrapper" v-if="active==='1'">
+              <div class="evaluate-goods" v-for="item in evaluateList" :key="item.id">
                 <div class="goods-img">
                   <img :src="item.image_path" alt />
                 </div>
@@ -37,26 +37,29 @@
           </div>
         </div>
       </van-tab>
-      <van-tab title="已评价">
+      <van-tab title="已评价" name='2'>
         <div class="evaluated">
           <div v-if="alreadyList.length <=0" class="no-evaluated">暂无评价</div>
           <div v-else>
-            <better-scroll class="wrapper">
+            <better-scroll v-if="active==='2'" class="wrapper">
               <div class="evaluated-goods" v-for="(item,index) in alreadyList" :key="index">
                 <div class="goods-img">
                   <img :src="item.image_path" alt />
                 </div>
                 <div class="goods-name">
                   <div>{{item.name}}</div>
-                  <van-button
-                    icon="search"
-                    type="primary"
-                    size="small"
-                    class="evaluate-btn"
-                    color="black"
-                    plain
-                    @click="evaluated(index)"
-                  >查看评价</van-button>
+                  <div>
+                    <div class="times">{{times(list[index].comment_time)}}</div>
+                    <van-button
+                      icon="search"
+                      type="primary"
+                      size="small"
+                      class="evaluate-btn"
+                      color="black"
+                      plain
+                      @click="evaluated(index)"
+                    >查看评价</van-button>
+                  </div>
                 </div>
               </div>
             </better-scroll>
@@ -77,7 +80,7 @@ export default {
       //已经评价的商品
       alreadyList: [],
       //已经评价的商品 和 评价内容
-      list:[]
+      list: []
     };
   },
   components: {},
@@ -97,12 +100,8 @@ export default {
         res.data.list.map(item => {
           this.alreadyList.push(item.goods[0]);
         });
-        this.list = res.data.list
-        // res.data.list.map(item => {
-        //   this.alreadyList.push(item);
-        // });
+        this.list = res.data.list;
         // console.log(res.data.list);
-        // console.log(this.alreadyList);
       });
     },
     //点击评论
@@ -111,14 +110,35 @@ export default {
     },
     //查看评价
     evaluated(index) {
-      this.$router.push({ name: "evaluationdetails"});
-      this.$store.state.list = this.list[index]
+      this.$router.push({ name: "evaluationdetails" });
+      this.$store.state.list = this.list[index];
       // console.log(this.$store.state.list);
+    },
+    //评价时间
+    times(oldtime) {
+      let nowtime = new Date();
+      // valueOf是转换成时间戳
+      let time =
+        this.$dayjs(nowtime).valueOf() - this.$dayjs(oldtime).valueOf();
+      let month = this.$dayjs(time).month();
+      let days = time / (24 * 60 * 60 * 1000);
+      let hours = time / (60 * 60 * 1000);
+      let minu = time / (60 * 1000);
+      if (month >= 1) {
+        return parseInt(month + 1) + "月前";
+      } else if (month < 1 && days >= 1) {
+        return parseInt(days) + "天前";
+      } else if (days < 1 && hours >= 1) {
+        return parseInt(hours) + "小时前";
+      } else if (hours < 1) {
+        return parseInt(minu) + "分钟前";
+      }
     }
   },
   mounted() {
     this.tobeEvaluated();
     this.alreadyEvaluated();
+    this.times();
   },
   watch: {},
   computed: {},
@@ -208,8 +228,17 @@ export default {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      .evaluate-btn {
-        margin: 10px 0 0 130px;
+      div {
+        &:nth-child(2) {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 15px;
+          .times {
+            font-size: 14px;
+            line-height: 29px;
+            margin-right: 15px;
+          }
+        }
       }
     }
   }

@@ -9,8 +9,8 @@
         <div slot="centre" class="history">历史浏览</div>
       </my-top>
     </van-sticky>
-    <better-scroll class="wrapper">
-      <goods-card v-for="item in history" :key="item.id" class="historycard">
+    <better-scroll class="wrapper" v-if="this.$store.state.history.length >0">
+      <goods-card v-for="item in history" :key="item.id"  class="historycard">
         <div slot="left" class="goods-img" @click="details(item.id)">
           <div class="imgs">
             <img :src="item.image_path" alt />
@@ -25,6 +25,7 @@
         </div>
       </goods-card>
     </better-scroll>
+    <div class="no-history"> 暂无浏览记录~</div>
   </div>
 </template>
 
@@ -57,7 +58,7 @@ export default {
         });
     },
     details(id) {
-      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
     }
   },
   mounted() {},
@@ -118,5 +119,11 @@ export default {
 }
 .historycard {
   height: 113px;
+}
+.no-history{
+  font-size: 16px;
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
 }
 </style>

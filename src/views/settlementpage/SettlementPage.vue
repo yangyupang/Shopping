@@ -30,21 +30,23 @@
       </div>
     </div>
     <div class="caitiao">
-      <img src="../../assets/img/caitiao.jpg" alt />
+      <!-- <img src="../../assets/img/caitiao.jpg" alt /> -->
     </div>
     <better-scroll class="wrapper">
-      <goods-card v-for="item in this.$store.state.settlementList" :key="item.id">
-        <div slot="left" class="goods-img" @click="details(item.cid || item.id)">
-          <div class="imgs">
-            <img :src="item.image_path" alt />
+      <div style="height: 69vh;">
+        <goods-card v-for="item in this.$store.state.settlementList" :key="item.id">
+          <div slot="left" class="goods-img" @click="details(item.cid || item.id)">
+            <div class="imgs">
+              <img :src="item.image_path" alt />
+            </div>
           </div>
-        </div>
-        <div slot="centre" class="goods" @click="details(item.cid || item.id)">
-          <div class="goods-name">{{item.name}}</div>
-          <div class="goods-price">￥{{item.present_price}}</div>
-        </div>
-        <div slot="right" class="count">×{{item.count}}</div>
-      </goods-card>
+          <div slot="centre" class="goods" @click="details(item.cid || item.id)">
+            <div class="goods-name">{{item.name}}</div>
+            <div class="goods-price">￥{{item.present_price}}</div>
+          </div>
+          <div slot="right" class="count">×{{item.count}}</div>
+        </goods-card>
+      </div>
     </better-scroll>
     <div class="invoicing">
       <div class="total">
@@ -184,7 +186,7 @@ export default {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
-  height: 12.2vh;
+  height: 13vh;
   .address-icon {
     font-size: 20px;
     padding: 30px 10px;
@@ -224,10 +226,13 @@ export default {
   justify-content: center;
 }
 .caitiao {
-  background-color: #fff;
-  img {
-    width: 100%;
-  }
+  width: 375px;
+  height: 1vh;
+  margin-top: 2px;
+  background: url(../../assets/img/caitiao.jpg);
+  // img {
+  //   width: 375px;
+  // }
 }
 .goods-img {
   .imgs {
@@ -262,14 +267,16 @@ export default {
 .invoicing {
   margin-top: 2px;
   height: 8vh;
+  width: 100vw;
   background-color: #fff;
   display: flex;
   font-size: 16px;
   justify-content: flex-end;
+  position: fixed;
+  bottom: 0;
   .total {
-    height: 52px;
-    line-height: 52px;
     margin-right: 20px;
+    line-height: 52px;
     span {
       color: red;
     }

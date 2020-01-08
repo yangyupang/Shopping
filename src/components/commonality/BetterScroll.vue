@@ -8,25 +8,32 @@
 
 <script>
 import BScroll from "better-scroll";
+
+
 export default {
   props: {},
   data() {
-    return {};
+    return {
+    };
   },
   components: {},
   methods: {
     init() {
-      this.bs = new BScroll(".wrapper", {
-        scrollY: true,
-        click: true,
-        probeType: 3 // listening scroll hook
-      });
-    }
+      if (this.bs) {
+        this.bs.refresh();
+      } else {
+        this.bs = new BScroll(".wrapper", {
+          scrollY: true,
+          click: true,
+          probeType: 3, // listening scroll hook,
+        });
+      }
+    },
   },
   mounted() {
-    setTimeout(()=>{
-       this.init();
-    },500)
+    setTimeout(() => {
+      this.init();
+    }, 500);
   },
   beforeDestroy() {},
   watch: {},

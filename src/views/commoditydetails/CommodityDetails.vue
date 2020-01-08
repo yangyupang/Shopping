@@ -211,7 +211,7 @@ export default {
             console.log(err);
           });
       } else if (this.user === "") {
-        this.$toast("您还没登录");
+        this.$toast("亲！您还没有登录哟~");
       }
       //取消收藏
       else {
@@ -278,7 +278,9 @@ export default {
     },
     // 直接购买
     onClickBy() {
-      this.showed = true;
+      if (this.user !== "") {
+        this.showed = true;
+      }else this.$toast("亲！您还没有登录哟~");
     },
     ClickBy() {
       this.detailsList.count = this.value;

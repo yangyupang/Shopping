@@ -42,7 +42,7 @@
             <div class="order-details">
               <div>创建时间:{{item.add_time}}</div>
               <div>收货地址:{{item.address}}</div>
-              <div>共{{item.status}}件商品 &nbsp; 合计:{{item.mallPrice}}</div>
+              <div>共{{item.count}}件商品 &nbsp; 合计:￥{{item.mallPrice}}</div>
             </div>
           </div>
         </better-scroll>
@@ -67,6 +67,13 @@ export default {
     getMyOrder() {
       this.$api.getMyOrder().then(res => {
         this.completedList = res.list;
+        this.completedList.map(item => {
+          this.totalcount = 0;
+          item.order_list.map(item0 => {
+              this.totalcount += item0.count;
+            });
+          item.count = this.totalcount;
+        });
       });
     }
   },
@@ -74,7 +81,9 @@ export default {
     this.getMyOrder();
   },
   watch: {},
-  computed: {},
+  computed: {
+
+  },
   filters: {}
 };
 </script>
