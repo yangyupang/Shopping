@@ -43,7 +43,7 @@
     <van-loading size="24px" vertical v-else>加载中...</van-loading>
     <van-popup v-model="show" position="bottom" :style="{ height: '92.2%' }" :overlay="false">
       <div v-if="searchlist.length !==0">
-        <div v-if="this.$store.state.search.length !==0" class="search-history">
+        <div v-if="search" class="search-history">
           <div style="padding:10px 0 0 10px">历史记录</div>
           <div class="histor">
             <div class="history">
@@ -73,7 +73,7 @@
         </goods-card>
       </div>
       <div v-else>
-        <div v-if="this.$store.state.search.length !==0" class="search-history">
+        <div v-if="search " class="search-history">
           <div style="padding:10px 0 0 10px">历史记录</div>
           <div class="histor">
             <div class="history">
@@ -115,7 +115,8 @@ export default {
       show: false,
       searchlist: [],
       flag: false,
-      user: ""
+      user: "",
+      searchHis: false
     };
   },
   components: {
@@ -123,7 +124,7 @@ export default {
     Recommend,
     GoodsRecommend,
     FloorGoods,
-    HotProduct,
+    HotProduct
   },
   methods: {
     //首页数据获取
@@ -166,16 +167,25 @@ export default {
     empty() {
       this.$dialog
         .confirm({
-          title: "删除历史记录",
-          message: "您确定要删除吗？"
+          title: "清除历史记录",
+          message: "您确定要清除吗？"
         })
         .then(() => {
-          this.$store.state.search = [];
-          this.$toast("删除成功");
+          if (localStorage.getItem("args") === "") {
+            this.searchHis = true;
+            localStorage.setItem("search", []);
+          } else if (JSON.parse(localStorage.getItem("args")).nickname) {
+            this.searchHis = true;
+            let name = `${
+              JSON.parse(localStorage.getItem("args")).nickname
+            }_search`;
+            localStorage.setItem(name, []);
+          }
+          this.$toast("清除成功");
           // on confirm
         })
         .catch(() => {
-          this.$toast("您取消了删除操作");
+          this.$toast("您取消了清除操作");
           // on cancel
         });
     },
@@ -186,8 +196,39 @@ export default {
     //跳转详情
     details(id) {
       this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
-      if (!this.$store.state.search.some(item => item === this.searchValue)) {
-        this.$store.state.search.push(this.searchValue);
+      if (this.searchValue.trim() !== "") {
+        if (localStorage.getItem("args") === "") {
+          if (!localStorage.getItem("search")) {
+            let arr = [];
+            arr.push(this.searchValue);
+            localStorage.setItem("search", JSON.stringify(arr));
+          } else if (localStorage.getItem("search")) {
+            let searchArr = JSON.parse(localStorage.getItem("search"));
+            if (!searchArr.includes(this.searchValue)) {
+              let searchs = JSON.parse(localStorage.getItem("search"));
+              searchs.unshift(this.searchValue);
+              localStorage.setItem("search", JSON.stringify(searchs));
+            }
+          }
+        }
+        //有用户登录
+        else if (JSON.parse(localStorage.getItem("args")).nickname) {
+          let name = `${
+            JSON.parse(localStorage.getItem("args")).nickname
+          }_search`;
+          if (!localStorage.getItem(name)) {
+            let arr = [];
+            arr.push(this.searchValue);
+            localStorage.setItem(name, JSON.stringify(arr));
+          } else if (localStorage.getItem(name)) {
+            let searchArr = JSON.parse(localStorage.getItem(name));
+            if (!searchArr.includes(this.searchValue)) {
+              let searchs = JSON.parse(localStorage.getItem(name));
+              searchs.unshift(this.searchValue);
+              localStorage.setItem(name, JSON.stringify(searchs));
+            }
+          }
+        }
       }
     },
     //获取购物车数据
@@ -208,7 +249,6 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.$util);
     let _this = this;
     var map = new AMap.Map("container", {
       resizeEnable: true
@@ -233,7 +273,10 @@ export default {
       // console.log(11);
     }
     //解析定位错误信息
-    function onError(data) {}
+    function onError(data) {
+      _this.$store.state.city = "咱也找不到";
+      // _this.$store.state.city =
+    }
     this.recommend();
     this.getCard();
     if (localStorage.getItem("args") !== "") {
@@ -270,7 +313,22 @@ export default {
       return this.$store.state.city;
     },
     search() {
-      return this.$store.state.search;
+      if (this.searchHis) {
+        return;
+      } else {
+        if (localStorage.getItem("args") === "") {
+          if (localStorage.getItem("search") !== "") {
+            return JSON.parse(localStorage.getItem("search"));
+          }
+        } else if (JSON.parse(localStorage.getItem("args")).nickname) {
+          let name = `${
+            JSON.parse(localStorage.getItem("args")).nickname
+          }_search`;
+          if (localStorage.getItem(name) !== "") {
+            return JSON.parse(localStorage.getItem(name));
+          }
+        }
+      }
     }
   },
   filters: {}

@@ -89,8 +89,8 @@ export default {
   },
   mounted() {
     this.getMyOrder();
-    this.active= this.$route.query.active;
-    // console.log(this.active);
+    this.active= String(this.$route.query.active);
+    // console.log(typeof this.active);
   },
   watch: {},
   computed: {},

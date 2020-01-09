@@ -9,8 +9,8 @@
         <div slot="centre" class="history">历史浏览</div>
       </my-top>
     </van-sticky>
-    <better-scroll class="wrapper" v-if="this.$store.state.history.length >0">
-      <goods-card v-for="item in history" :key="item.id"  class="historycard">
+    <better-scroll class="wrapper" v-if="historylist.length >0 ">
+      <goods-card v-for="item in historylist" :key="item.id" class="historycard">
         <div slot="left" class="goods-img" @click="details(item.id)">
           <div class="imgs">
             <img :src="item.image_path" alt />
@@ -25,14 +25,17 @@
         </div>
       </goods-card>
     </better-scroll>
-    <div class="no-history"> 暂无浏览记录~</div>
+    <div class="no-history">暂无浏览记录~</div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      browsingHis: false,
+      historylist: []
+    };
   },
   components: {},
   methods: {
@@ -46,11 +49,21 @@ export default {
           message: "您确定要删除吗？"
         })
         .then(() => {
-          this.$store.state.history = this.$store.state.history.filter(item => {
-            return item !== val;
+          let name = `${
+            JSON.parse(localStorage.getItem("args")).nickname
+          }_browsing`;
+          let history = JSON.parse(localStorage.getItem(name));
+          // console.log(val);
+          history = history.filter(item => {
+            return item.id !== val.id;
           });
+          this.historylist = history;
+          localStorage.setItem(name, JSON.stringify(history));
+
+          // this.$store.state.history = this.$store.state.history.filter(item => {
+          //   return item !== val;
+          // });
           this.$toast("删除成功");
-          // on confirm
         })
         .catch(() => {
           this.$toast("您取消了删除操作");
@@ -59,15 +72,28 @@ export default {
     },
     details(id) {
       this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
-    }
-  },
-  mounted() {},
-  watch: {},
-  computed: {
+    },
     history() {
-      return this.$store.state.history;
+      // if (this.browsingHis) {
+      //   return;
+      // } else {}
+      if (JSON.parse(localStorage.getItem("args")).nickname) {
+        let name = `${
+          JSON.parse(localStorage.getItem("args")).nickname
+        }_browsing`;
+        if (localStorage.getItem(name) !== "") {
+          this.historylist = JSON.parse(localStorage.getItem(name));
+        }
+      }
+
+      // return this.$store.state.history
     }
   },
+  mounted() {
+    this.history();
+  },
+  watch: {},
+  computed: {},
   filters: {}
 };
 </script>
@@ -120,7 +146,7 @@ export default {
 .historycard {
   height: 113px;
 }
-.no-history{
+.no-history {
   font-size: 16px;
   padding: 20px;
   background-color: #fff;

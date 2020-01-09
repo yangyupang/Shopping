@@ -172,7 +172,6 @@ export default {
         .then(res => {
           this.detailsList = res.goods.goodsOne;
           this.comment = res.goods.comment;
-          // console.log(this.comment);
           this.images.push(res.goods.goodsOne.image);
         })
         .catch(err => {
@@ -314,12 +313,26 @@ export default {
   },
   filters: {},
   beforeRouteLeave(to, from, next) {
-    if (
-      !this.$store.state.history.some(item => item.id === this.detailsList.id)
-    ) {
-      this.$store.state.history.push(this.detailsList);
+    if (JSON.parse(localStorage.getItem("args")).nickname) {
+      let name = `${JSON.parse(localStorage.getItem("args")).nickname}_browsing`;
+      if (!localStorage.getItem(name)) {
+        let arr = [];
+        arr.push(this.detailsList);
+        localStorage.setItem(name, JSON.stringify(arr));
+      } else if (localStorage.getItem(name)) {
+        let searchArr = JSON.parse(localStorage.getItem(name));
+        if (!searchArr.some(item => item.id === this.detailsList.id)) {
+          let searchs = JSON.parse(localStorage.getItem(name));
+          searchs.unshift(this.detailsList);
+          localStorage.setItem(name, JSON.stringify(searchs));
+        }
+      }
     }
-
+    // if (
+    //   !this.$store.state.history.some(item => item.id === this.detailsList.id)
+    // ) {
+    //   this.$store.state.history.push(this.detailsList);
+    // }
     next();
   }
 };

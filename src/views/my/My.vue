@@ -180,7 +180,11 @@ export default {
     },
     //点击历史浏览
     history() {
-      this.$router.push("/browsinghistory");
+      if (this.username) {
+        this.$router.push("/browsinghistory");
+      } else {
+        this.$toast("亲！您还没有登录哟~");
+      }
     },
     //获取有多少条评价消息
     tobeEvaluated() {

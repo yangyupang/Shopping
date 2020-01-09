@@ -6,7 +6,7 @@
           <span>下拉刷新</span>
         </div>
         <div v-show="!beforePullDown">
-          <div v-show="isPullingDown">
+          <div v-show="isPullingDown" class="isPullingDown">
             <van-loading size="16px">加载中...</van-loading>
           </div>
         </div>
@@ -44,22 +44,21 @@ export default {
           bounceTime: 2000,
           probeType: 3, // listening scroll hook,
           pullDownRefresh: {
-            threshold: 50,
-            stop: 0
+            threshold: 100,
+            stop: 30
           }
         });
       }
       this.bs.on("pullingDown", this.pullingDownHandler);
     },
-    pullingDownHandler() {
-      // console.log(111);
+    async  pullingDownHandler() {
       this.beforePullDown = false;
       this.isPullingDown = true;
-      this.$emit("func");
-      this.$store.state.pullDown=true;
+      await  this.$emit("func");
+      this.$store.state.pullDown = true;
     },
-    finishPullDown() {
-      new Promise(resolve => {
+    async  finishPullDown() {
+      await new Promise(resolve => {
         setTimeout(() => {
           this.bs.finishPullDown();
           resolve();
@@ -69,7 +68,7 @@ export default {
         this.beforePullDown = true;
         this.$toast("刷新成功");
         this.bs.refresh();
-        this.$store.state.pullDown=false;
+        this.$store.state.pullDown = false;
       }, 1500);
     }
   },
@@ -84,8 +83,7 @@ export default {
       if (val) {
         setTimeout(() => {
           this.isPullingDown = false;
-        }, 400);
-
+        }, 1000);
         this.finishPullDown();
       }
     }
@@ -101,5 +99,8 @@ export default {
   // overflow: hidden;
   font-size: 16px;
   text-align: center;
+}
+.isPullingDown {
+  height: 3vh;
 }
 </style>

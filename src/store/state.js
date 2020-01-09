@@ -1,8 +1,8 @@
 export default {
     category: [],
     city: "",
-    history: [],
     search: [],
+    history: [],
     //购物车数据
     shoppingcart: [],
     //要结算的数据

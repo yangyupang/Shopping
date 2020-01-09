@@ -1,7 +1,7 @@
 <template>
   <!-- 底部父路由 -->
   <div>
-    <keep-alive include="home,my">
+    <keep-alive include="my">
       <router-view />
     </keep-alive>
 
