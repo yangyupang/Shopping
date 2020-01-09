@@ -1,8 +1,10 @@
 <template>
   <!-- 底部父路由 -->
   <div>
-    <!-- <keep-alive include="classify"></keep-alive> -->
-    <router-view />
+    <keep-alive include="home,my">
+      <router-view />
+    </keep-alive>
+
     <van-tabbar v-model="active">
       <van-tabbar-item replace to="/home" icon="home-o" name="home">首页</van-tabbar-item>
       <van-tabbar-item replace to="/classify" icon="points" name="classify">分类</van-tabbar-item>

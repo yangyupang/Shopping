@@ -84,22 +84,24 @@
     <van-popup v-model="show" position="right" :style="{ width: '100%',height:'100%' }">
       <Eject @changes="change"></Eject>
     </van-popup>
+    <Logining />
   </div>
 </template>
 
 <script>
+import Logining from "../../../src/components/Logining";
 import Eject from "../../components/Eject";
 export default {
+  name: "my",
   data() {
     return {
       username: "",
       active: "",
       num: "",
-      show: false,
-      
+      show: false
     };
   },
-  components: { Eject },
+  components: { Eject, Logining },
   methods: {
     tologin() {
       this.$router.push("/login");
@@ -119,7 +121,7 @@ export default {
           this.username = "";
           localStorage.setItem("args", this.username);
           this.$store.state.shoppingcart = null;
-          this.num ="";
+          this.num = "";
         })
         .catch(err => {
           console.log(err);
@@ -129,15 +131,15 @@ export default {
       if (this.username) {
         // 点击待付款
         if (index === 0) {
-          this.$router.push({name:"myorder",query:{active:1}});
+          this.$router.push({ name: "myorder", query: { active: 1 } });
         }
         // 点击待发货
         else if (index === 1) {
-          this.$router.push({name:"myorder",query:{active:2}});
+          this.$router.push({ name: "myorder", query: { active: 2 } });
         }
         // 点击待收货
         else if (index === 2) {
-          this.$router.push({name:"myorder",query:{active:3}});
+          this.$router.push({ name: "myorder", query: { active: 3 } });
         }
         // 点击去评价
         else if (index === 3) {
@@ -145,7 +147,7 @@ export default {
         }
         //点击已完成
         else if (index === 4) {
-          this.$router.push({name:"myorder",query:{active:4}});
+          this.$router.push({ name: "myorder", query: { active: 4 } });
         }
       } else {
         this.$toast("亲！您还没有登录哟~");
@@ -155,7 +157,7 @@ export default {
     //点击所有订单
     allorder() {
       if (this.username) {
-        this.$router.push({name:"myorder",query:{active:0}});
+        this.$router.push({ name: "myorder", query: { active: 0 } });
       } else {
         this.$toast("亲！您还没有登录哟~");
       }
@@ -194,8 +196,8 @@ export default {
     if (localStorage.getItem("args") !== "") {
       this.username = JSON.parse(localStorage.getItem("args"));
       this.$store.state.user = this.username.nickname;
+      this.tobeEvaluated();
     }
-    this.tobeEvaluated();
   },
   watch: {},
   computed: {},

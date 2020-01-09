@@ -1,16 +1,17 @@
 <template>
   <div id="app">
     <transition name="fade">
-      <router-view></router-view>
+        <router-view></router-view>
     </transition>
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {};
   },
-  components: {}
+  components: { }
 };
 </script>
 <style lang="scss">
@@ -26,7 +27,7 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
-body{
+body {
   background-color: #ececec;
 }
 </style>

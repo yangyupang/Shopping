@@ -56,12 +56,14 @@
         </div>
       </div>
     </div>
+    <Logining/>
   </div>
 </template>
 
 <script>
+import Logining from "../../../src/components/Logining";
 export default {
-  // name:'classify',
+  name:'classify',
   data() {
     return {
       CategoryId: 0,
@@ -71,7 +73,7 @@ export default {
       default: 0
     };
   },
-  components: {},
+  components: {Logining},
   methods: {
     // 点击侧边栏切换商品显示的默认值
     onChange(index) {

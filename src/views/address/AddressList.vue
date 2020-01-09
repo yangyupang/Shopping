@@ -62,7 +62,7 @@ export default {
         .getAddress()
         .then(res => {
           if (res.code === 200) {
-            this.addressList = res.address;
+            this.addressList = res.address.reverse();
             // console.log(this.addressList);
             let defaultAddress;
             // 循环收获地址将默认选项置顶并且选中

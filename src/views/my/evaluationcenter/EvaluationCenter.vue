@@ -11,12 +11,12 @@
       <img src="../../../assets/img/evaluate.jpg" alt />
     </div>
     <van-tabs v-model="active" class="van__tabs">
-      <van-tab title="待评价" name='1'>
+      <van-tab title="待评价" name="1">
         <div class="to-evaluate">
           <div v-if="evaluateList.length <=0" class="no-goods">暂无需要评价的物品</div>
           <div v-else>
             <better-scroll class="wrapper" v-if="active==='1'">
-              <div class="evaluate-goods" v-for="item in evaluateList" :key="item.id">
+              <div class="evaluate-goods" v-for="item in evaluateList" :key="item.id" @click="details(item.cid || item.id)" >
                 <div class="goods-img">
                   <img :src="item.image_path" alt />
                 </div>
@@ -29,7 +29,7 @@
                     class="evaluate-btn"
                     color="red"
                     plain
-                    @click="evaluate(item.cid)"
+                    @click.stop="evaluate(item.cid)"
                   >晒单评论</van-button>
                 </div>
               </div>
@@ -37,12 +37,12 @@
           </div>
         </div>
       </van-tab>
-      <van-tab title="已评价" name='2'>
+      <van-tab title="已评价" name="2">
         <div class="evaluated">
           <div v-if="alreadyList.length <=0" class="no-evaluated">暂无评价</div>
           <div v-else>
             <better-scroll v-if="active==='2'" class="wrapper">
-              <div class="evaluated-goods" v-for="(item,index) in alreadyList" :key="index">
+              <div class="evaluated-goods" v-for="(item,index) in alreadyList" :key="index" @click="details(item.cid || item.id)">
                 <div class="goods-img">
                   <img :src="item.image_path" alt />
                 </div>
@@ -57,7 +57,7 @@
                       class="evaluate-btn"
                       color="black"
                       plain
-                      @click="evaluated(index)"
+                      @click.stop="evaluated(index)"
                     >查看评价</van-button>
                   </div>
                 </div>
@@ -88,10 +88,14 @@ export default {
     back() {
       this.$router.go(-1);
     },
+    //跳转详情
+    details(id) {
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
+    },
     //获取评价消息
     tobeEvaluated() {
       this.$api.tobeEvaluated().then(res => {
-        this.evaluateList = res.data.list;
+        this.evaluateList = res.data.list.reverse();
       });
     },
     //查询已评价

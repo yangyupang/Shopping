@@ -54,12 +54,11 @@
       <div class="detail-comments">
         <van-tabs v-model="active" swipeable title-active-color="red">
           <van-tab title="商品详情">
-            <better-scroll class="wrapper">
-              <div v-html="detailsList.detail" v-if="detailsList"></div>
-              <div v-else>
-                <van-loading size="24px" vertical>加载中...</van-loading>
-              </div>
-            </better-scroll>
+            <!-- <better-scroll class="wrapper" > </better-scroll> -->
+            <div v-html="detailsList.detail" v-if="detailsList" style="margin-bottom: 8vh;"></div>
+            <div v-else>
+              <van-loading size="24px" vertical>加载中...</van-loading>
+            </div>
           </van-tab>
           <van-tab title="商品评价">
             <better-scroll class="wrapper">
@@ -280,7 +279,7 @@ export default {
     onClickBy() {
       if (this.user !== "") {
         this.showed = true;
-      }else this.$toast("亲！您还没有登录哟~");
+      } else this.$toast("亲！您还没有登录哟~");
     },
     ClickBy() {
       this.detailsList.count = this.value;

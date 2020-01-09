@@ -18,6 +18,7 @@
           placeholder="请输入用户名"
           @click-right-icon="$toast('要输入完整信息哟')"
         />
+        <!-- <form></form> -->
         <van-field
           v-model="password"
           :type="types"

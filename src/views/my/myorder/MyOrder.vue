@@ -8,19 +8,19 @@
       <div slot="centre" class="myorder">我的订单</div>
     </my-top>
     <van-tabs v-model="active">
-      <van-tab title="全部">
+      <van-tab title="全部" name="0">
         <div class="all">功能尚未开发！尽情期待！</div>
       </van-tab>
-      <van-tab title="待付款">
+      <van-tab title="待付款" name="1">
         <div class="all">功能尚未开发！尽情期待！</div>
       </van-tab>
-      <van-tab title="待发货">
+      <van-tab title="待发货" name="2">
         <div class="all">功能尚未开发！尽情期待！</div>
       </van-tab>
-      <van-tab title="待收货">
+      <van-tab title="待收货" name="3">
         <div class="all">功能尚未开发！尽情期待！</div>
       </van-tab>
-      <van-tab title="已完成">
+      <van-tab title="已完成" name="4">
         <better-scroll class="wrapper">
           <div class="order" v-for="item in completedList" :key="item.id">
             <div class="order_id">
@@ -28,7 +28,12 @@
               <div class="achieve">交易完成</div>
             </div>
             <!-- 商品 -->
-            <div v-for="item0 in item.order_list" :key="item0.id" class="achieve-goods">
+            <div
+              v-for="item0 in item.order_list"
+              :key="item0.id"
+              class="achieve-goods"
+              @click="details(item0.cid || item0.id)"
+            >
               <div class="goods-img">
                 <img :src="item0.image_path" alt />
               </div>
@@ -53,16 +58,21 @@
 
 <script>
 export default {
+  name: "myorder",
   data() {
     return {
-      active: this.$route.query.active,
+      active:'',
       completedList: []
     };
   },
   components: {},
   methods: {
     back() {
-      this.$router.go(-1);
+      this.$router.push("/my");
+    },
+    //跳转详情
+    details(id) {
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
     },
     getMyOrder() {
       this.$api.getMyOrder().then(res => {
@@ -70,8 +80,8 @@ export default {
         this.completedList.map(item => {
           this.totalcount = 0;
           item.order_list.map(item0 => {
-              this.totalcount += item0.count;
-            });
+            this.totalcount += item0.count;
+          });
           item.count = this.totalcount;
         });
       });
@@ -79,11 +89,11 @@ export default {
   },
   mounted() {
     this.getMyOrder();
+    this.active= this.$route.query.active;
+    // console.log(this.active);
   },
   watch: {},
-  computed: {
-
-  },
+  computed: {},
   filters: {}
 };
 </script>

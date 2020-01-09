@@ -56,6 +56,7 @@ export default {
       this.beforePullDown = false;
       this.isPullingDown = true;
       this.$emit("func");
+      this.$store.state.pullDown=true;
     },
     finishPullDown() {
       new Promise(resolve => {
@@ -68,6 +69,7 @@ export default {
         this.beforePullDown = true;
         this.$toast("刷新成功");
         this.bs.refresh();
+        this.$store.state.pullDown=false;
       }, 1500);
     }
   },

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-
+import state from '../store/state'
 // let loading = null
 
 
@@ -20,8 +20,11 @@ service.defaults.timeout = 10000
     // 请求头类?
 service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-// 请求拦截?
+// 请求拦截器
 service.interceptors.request.use(config => {
+    if (!state.pullDown) {
+        state.login = true
+    }
     let token = localStorage.getItem('adminToken')
         // 每次请求 都在请求头带上token
     if (token) {
@@ -35,9 +38,12 @@ service.interceptors.request.use(config => {
 
 // 响应拦截�?
 service.interceptors.response.use(response => {
-    // if (loading) {
-    //     loading.close()
-    // }
+    setTimeout(() => {
+            state.login = false
+        }, 800)
+        // if (loading) {
+        //     loading.close()
+        // }
     return response.data
 }, err => {
     // if (err.response.status === 401) {

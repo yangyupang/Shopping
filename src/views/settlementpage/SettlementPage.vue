@@ -129,7 +129,7 @@ export default {
           })
           .then(res => {
             this.$toast(res.msg);
-            this.$router.go(-1);
+            this.$router.push({ name: "myorder", query: { active: 4 } });
             this.$store.state.settlementList = [];
           });
       } else {

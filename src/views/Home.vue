@@ -17,7 +17,7 @@
       @refresh="onRefresh"
       v-if="list.floor1"
     >    </van-pull-refresh>-->
-    <bs-home v-if="list.floor1" class="wrapper" @func="recommend" :flag='flag'>
+    <bs-home v-if="list.floor1" class="wrapper" @func="recommend" :flag="flag">
       <!-- 商品轮播 -->
       <GoodsShuffling :swipelist="list.slides" class="swipe"></GoodsShuffling>
       <!-- 新鲜水果，中外名酒 -->
@@ -104,6 +104,7 @@ import util from "../../src/assets/js/util.js";
 Vue.prototype.$util = util;
 
 export default {
+  name: "home",
   data() {
     return {
       searchValue: "",
@@ -113,7 +114,8 @@ export default {
       floorname: "",
       show: false,
       searchlist: [],
-      flag: false
+      flag: false,
+      user: ""
     };
   },
   components: {
@@ -121,7 +123,7 @@ export default {
     Recommend,
     GoodsRecommend,
     FloorGoods,
-    HotProduct
+    HotProduct,
   },
   methods: {
     //首页数据获取
@@ -183,7 +185,7 @@ export default {
     },
     //跳转详情
     details(id) {
-      this.$router.push({ name: "commoditydetails", params: { goodsId: id } });
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
       if (!this.$store.state.search.some(item => item === this.searchValue)) {
         this.$store.state.search.push(this.searchValue);
       }
@@ -194,10 +196,10 @@ export default {
         .getCard()
         .then(res => {
           this.cartlist = res.shopList;
-          // console.log(res.shopList);
-          // if (res.shopList !== null) {}
-          if (res.shopList.length >= 0) {
-            this.$store.state.shoppingcart = res.shopList;
+          if (this.user) {
+            if (res.shopList.length >= 0) {
+              this.$store.state.shoppingcart = res.shopList;
+            }
           }
         })
         .catch(err => {
@@ -234,6 +236,9 @@ export default {
     function onError(data) {}
     this.recommend();
     this.getCard();
+    if (localStorage.getItem("args") !== "") {
+      this.user = localStorage.getItem("args");
+    }
     //搜索监听
     this.$watch(
       "searchValue",
@@ -259,20 +264,7 @@ export default {
       }, 200)
     );
   },
-  watch: {
-    //搜索赋值
-    // searchValue(val) {
-    //   val.trim();
-    //   if (val === "") {
-    //     this.searchlist = [];
-    //   } else {
-    //     // console.log(val);
-    //     // this.$util.debounce(
-    //     //   500
-    //     // );
-    //   }
-    // }
-  },
+  watch: {},
   computed: {
     city() {
       return this.$store.state.city;

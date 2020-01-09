@@ -13,4 +13,6 @@ export default {
     user: "",
     //用于存商品评价
     list: {},
+    login: true,
+    pullDown: false,
 }

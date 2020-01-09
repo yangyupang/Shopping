@@ -31,9 +31,10 @@
                 :price="item.present_price | price"
                 :title="item.name"
                 :thumb="item.image_path"
+                @click-thumb="details(item.cid || item.id)"
               >
                 <div slot="footer">
-                  <van-stepper v-model="item.count" @change="add(item)" />
+                  <van-stepper v-model="item.count" @click="add(item)" />
                 </div>
               </van-card>
             </div>
@@ -58,18 +59,23 @@
 
 <script>
 export default {
+  name: "shoppingcart",
   data() {
     return {
       loginobj: "",
       // 购物车数据
       cartlist: [],
-      checked: false,
+      checked: false
     };
   },
   components: {},
   methods: {
     tologin() {
       this.$router.push("/login");
+    },
+    //跳转详情
+    details(id) {
+      this.$router.push({ name: "commoditydetails", query: { goodsId: id } });
     },
     //获取购物车数据
     getCard() {
@@ -79,7 +85,6 @@ export default {
           this.cartlist = res.shopList;
           if (res.shopList.length >= 0) {
             this.$store.state.shoppingcart = res.shopList;
-            // console.log(this.$store.state.shoppingcart);
           }
         })
         .catch(err => {
@@ -155,8 +160,8 @@ export default {
   mounted() {
     if (localStorage.getItem("args") !== "") {
       this.loginobj = localStorage.getItem("args");
+      this.getCard();
     }
-    this.getCard();
   },
   watch: {},
   computed: {
