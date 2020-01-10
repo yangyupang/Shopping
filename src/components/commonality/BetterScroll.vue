@@ -2,6 +2,14 @@
   <div ref="wrapper">
     <div class="scroll-content">
       <slot class="height"></slot>
+      <div class="pullup-wrapper">
+        <div v-if="!isPullUpLoad" class="before-trigger">
+          <span class="pullup-txt">没有更多了~</span>
+        </div>
+        <div v-else class="after-trigger">
+          <span class="pullup-txt">Loading...</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -9,11 +17,16 @@
 <script>
 import BScroll from "better-scroll";
 
-
 export default {
-  props: {},
+  props: {
+    flag: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
+      isPullUpLoad: false
     };
   },
   components: {},
@@ -22,13 +35,30 @@ export default {
       if (this.bs) {
         this.bs.refresh();
       } else {
-        this.bs = new BScroll(".wrapper", {
+        this.bs = new BScroll(this.$refs.wrapper, {
           scrollY: true,
           click: true,
-          probeType: 3, // listening scroll hook,
+          pullUpLoad: {
+            threshold: 50
+          },
+          probeType: 3 // listening scroll hook,
         });
       }
+      // this.bs.on("pullingUp", () => {
+      //   console.log(111);
+      //   this.$emit("pullUp");
+      // });
+      this.bs.on("pullingUp", this.pullingUpHandler);
     },
+
+    async pullingUpHandler() {
+      this.isPullUpLoad = true;
+      setTimeout(() => {
+        this.$emit("pullUp");
+      }, 1000);
+      this.bs.refresh();
+    },
+    
   },
   mounted() {
     setTimeout(() => {
@@ -36,10 +66,24 @@ export default {
     }, 500);
   },
   beforeDestroy() {},
-  watch: {},
+  watch: {
+    flag(val) {
+      if (val) {
+        setTimeout(() => {
+          this.bs.finishPullUp();
+        }, 600);
+        this.isPullUpLoad = false;
+      }
+    }
+  },
   computed: {}
 };
 </script>
 
 <style lang='scss'>
+.pullup-wrapper {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+}
 </style>

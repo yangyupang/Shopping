@@ -15,8 +15,13 @@
         <div class="to-evaluate">
           <div v-if="evaluateList.length <=0" class="no-goods">暂无需要评价的物品</div>
           <div v-else>
-            <better-scroll class="wrapper" v-if="active==='1'">
-              <div class="evaluate-goods" v-for="item in evaluateList" :key="item.id" @click="details(item.cid || item.id)" >
+            <better-scroll class="wrapper" v-if="active==='1' || evaluateList.length >0">
+              <div
+                class="evaluate-goods"
+                v-for="item in evaluateList"
+                :key="item.id"
+                @click="details(item.cid || item.id)"
+              >
                 <div class="goods-img">
                   <img :src="item.image_path" alt />
                 </div>
@@ -41,8 +46,18 @@
         <div class="evaluated">
           <div v-if="alreadyList.length <=0" class="no-evaluated">暂无评价</div>
           <div v-else>
-            <better-scroll v-if="active==='2'" class="wrapper">
-              <div class="evaluated-goods" v-for="(item,index) in alreadyList" :key="index" @click="details(item.cid || item.id)">
+            <better-scroll
+              v-if="active==='2' || alreadyEvaluated.length >0"
+              class="wrapper"
+              @pullUp="alreadyEvaluated"
+              :flag="flag"
+            >
+              <div
+                class="evaluated-goods"
+                v-for="(item,index) in alreadyList"
+                :key="index"
+                @click="details(item.cid || item.id)"
+              >
                 <div class="goods-img">
                   <img :src="item.image_path" alt />
                 </div>
@@ -80,7 +95,8 @@ export default {
       //已经评价的商品
       alreadyList: [],
       //已经评价的商品 和 评价内容
-      list: []
+      list: [],
+      flag: false
     };
   },
   components: {},
@@ -96,16 +112,23 @@ export default {
     tobeEvaluated() {
       this.$api.tobeEvaluated().then(res => {
         this.evaluateList = res.data.list.reverse();
+        // console.log(this.evaluateList);
       });
     },
     //查询已评价
     alreadyEvaluated() {
-      this.$api.alreadyEvaluated().then(res => {
-        res.data.list.map(item => {
-          this.alreadyList.push(item.goods[0]);
-        });
-        this.list = res.data.list;
-        // console.log(res.data.list);
+      // console.log(22);
+      this.flag = false;
+      this.$api.alreadyEvaluated(Math.ceil(this.list.length/10)+1).then(res => {
+        if (res.data.list.length>0) {
+          this.flag = true;
+          res.data.list.map(item => {
+            this.alreadyList.push(item.goods[0]);
+          });
+          this.list.push (...res.data.list) ;
+          // console.log(res.data.list);
+          // console.log(res.data.list);
+        }
       });
     },
     //点击评论

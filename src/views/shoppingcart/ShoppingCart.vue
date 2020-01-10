@@ -22,7 +22,7 @@
               </div>
             </div>
           </van-sticky>
-          <better-scroll class="wrapper">
+          <better-scroll class="wrapper" v-if="cartlist.length>0">
             <div v-for="(item,index) in cartlist" :key="index" class="shoppingcart">
               <!-- 单选 -->
               <van-checkbox v-model="item.check" @click="isCheck(index)"></van-checkbox>
@@ -34,7 +34,7 @@
                 @click-thumb="details(item.cid || item.id)"
               >
                 <div slot="footer">
-                  <van-stepper v-model="item.count" @click="add(item)" />
+                  <van-stepper v-model="item.count" @change="add(item)" />
                 </div>
               </van-card>
             </div>

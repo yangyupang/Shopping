@@ -204,9 +204,9 @@ export default {
             localStorage.setItem("search", JSON.stringify(arr));
           } else if (localStorage.getItem("search")) {
             let searchArr = JSON.parse(localStorage.getItem("search"));
-            if (!searchArr.includes(this.searchValue)) {
+            if (!searchArr.includes(this.searchValue.trim())) {
               let searchs = JSON.parse(localStorage.getItem("search"));
-              searchs.unshift(this.searchValue);
+              searchs.unshift(this.searchValue.trim());
               localStorage.setItem("search", JSON.stringify(searchs));
             }
           }
@@ -218,13 +218,13 @@ export default {
           }_search`;
           if (!localStorage.getItem(name)) {
             let arr = [];
-            arr.push(this.searchValue);
+            arr.push(this.searchValue.trim());
             localStorage.setItem(name, JSON.stringify(arr));
           } else if (localStorage.getItem(name)) {
             let searchArr = JSON.parse(localStorage.getItem(name));
-            if (!searchArr.includes(this.searchValue)) {
+            if (!searchArr.includes(this.searchValue.trim())) {
               let searchs = JSON.parse(localStorage.getItem(name));
-              searchs.unshift(this.searchValue);
+              searchs.unshift(this.searchValue.trim());
               localStorage.setItem(name, JSON.stringify(searchs));
             }
           }

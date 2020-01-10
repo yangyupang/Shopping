@@ -972,3 +972,21 @@ hostname: �������С����
 pid: 8432
 hostname: �������С����
 
+2020-01-10 12:54:44,608 ERROR 18972 [-/127.0.0.1/-/64ms GET /v1/alreadyEvaluated?page=0] nodejs.MongoError: Argument to $skip cannot be negative
+    at Connection.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongodb@3.4.1@mongodb\lib\core\connection\pool.js:466:61)
+    at Connection.emit (events.js:210:5)
+    at processMessage (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongodb@3.4.1@mongodb\lib\core\connection\connection.js:384:10)
+    at Socket.<anonymous> (C:\Users\asus\Desktop\培训项目们\Shopping\server\node_modules\_mongodb@3.4.1@mongodb\lib\core\connection\connection.js:553:15)
+    at Socket.emit (events.js:210:5)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:290:11)
+    at Socket.Readable.push (_stream_readable.js:224:10)
+    at TCP.onStreamRead (internal/stream_base_commons.js:182:23)
+ok: 0
+errmsg: "Argument to $skip cannot be negative"
+code: 15956
+codeName: "Location15956"
+name: "MongoError"
+pid: 18972
+hostname: �������С����
+

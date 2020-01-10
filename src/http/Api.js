@@ -53,7 +53,9 @@ export default {
     },
 
     deleteShop(id) {
-        return service.req('/deleteShop', { _id: id })
+        return service.req('/deleteShop', {
+            _id: id
+        })
     },
 
     // ===============================================================================================================
@@ -88,19 +90,25 @@ export default {
         return service.req('/collection', goods)
     },
 
-    cancelCollection({ id }) {
+    cancelCollection({
+        id
+    }) {
         return service.req('/cancelCollection', {
             id
         })
     },
 
-    isCollection({ id }) {
+    isCollection({
+        id
+    }) {
         return service.req('/isCollection', {
             id
         })
     },
 
-    addShop({ id }) {
+    addShop({
+        id
+    }) {
         return service.req('/addShop', {
             id
         })
@@ -189,8 +197,8 @@ export default {
         })
     },
 
-    getCollection() {
-        return service.req('/collection/list?page=1')
+    getCollection(page = 1) {
+        return service.req(`/collection/list?page=${page}`)
     },
     register({
         nickname,
@@ -227,7 +235,7 @@ export default {
     },
 
     alreadyEvaluated(page = 1) {
-        return service.req('/alreadyEvaluated?page=1')
+        return service.req(`/alreadyEvaluated?page=${page}`)
     },
 
     tobeEvaluated(page = 1) {

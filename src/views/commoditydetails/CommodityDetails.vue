@@ -313,6 +313,7 @@ export default {
   },
   filters: {},
   beforeRouteLeave(to, from, next) {
+    if(localStorage.getItem("args") !==""){
     if (JSON.parse(localStorage.getItem("args")).nickname) {
       let name = `${JSON.parse(localStorage.getItem("args")).nickname}_browsing`;
       if (!localStorage.getItem(name)) {
@@ -328,11 +329,8 @@ export default {
         }
       }
     }
-    // if (
-    //   !this.$store.state.history.some(item => item.id === this.detailsList.id)
-    // ) {
-    //   this.$store.state.history.push(this.detailsList);
-    // }
+    }
+
     next();
   }
 };
