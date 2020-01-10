@@ -51,14 +51,15 @@ export default {
       this.bs.on("pullingUp", this.pullingUpHandler);
     },
 
-    async pullingUpHandler() {
+    pullingUpHandler() {
       this.isPullUpLoad = true;
       setTimeout(() => {
+        // console.log(11);
         this.$emit("pullUp");
       }, 1000);
       this.bs.refresh();
-    },
-    
+      this.isPullUpLoad = false;
+    }
   },
   mounted() {
     setTimeout(() => {
@@ -71,8 +72,7 @@ export default {
       if (val) {
         setTimeout(() => {
           this.bs.finishPullUp();
-        }, 600);
-        this.isPullUpLoad = false;
+        }, 0);
       }
     }
   },

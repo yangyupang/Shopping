@@ -96,7 +96,8 @@ export default {
       alreadyList: [],
       //已经评价的商品 和 评价内容
       list: [],
-      flag: false
+      flag: false,
+      page: 1
     };
   },
   components: {},
@@ -119,16 +120,22 @@ export default {
     alreadyEvaluated() {
       // console.log(22);
       this.flag = false;
-      this.$api.alreadyEvaluated(Math.ceil(this.list.length/10)+1).then(res => {
-        if (res.data.list.length>0) {
-          this.flag = true;
-          res.data.list.map(item => {
-            this.alreadyList.push(item.goods[0]);
-          });
-          this.list.push (...res.data.list) ;
-          // console.log(res.data.list);
-          // console.log(res.data.list);
+      this.$api.alreadyEvaluated(this.page).then(res => {
+        if (res.code === 200) {
+          if (res.data.count > this.alreadyList.length) {
+            this.flag = true;
+            this.page++;
+            res.data.list.map(item => {
+              this.alreadyList.push(item.goods[0]);
+            });
+            this.list.push(...res.data.list);
+          } else {
+            this.flag = true;
+          }
         }
+
+        // console.log(res.data.list);
+        // console.log(res.data.list);
       });
     },
     //点击评论
